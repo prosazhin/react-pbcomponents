@@ -11,15 +11,16 @@ export default [
 		input: './src/index.js',
 		output: [
 			{
-				file: 'build/index.js',
+				file: 'public/components/index.js',
 				format: 'cjs',
 			}
 		],
 		plugins: [
 			postcss({
+				extensions: ['.scss'],
 				modules: true,
 				autoModules: true,
-				extract: true,
+				inject: true,
 				minimize: true,
 				exec: true,
 				use: [

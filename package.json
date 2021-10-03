@@ -1,7 +1,7 @@
 {
   "name": "prosazhin-react-base-components-test",
-  "version": "0.1.1",
-  "main": "build/index.js",
+  "version": "0.1.2",
+  "main": "public/components/index.js",
   "repository": "git@github.com:prosazhin/prosazhin-react-base-components.git",
   "author": "Евгений Сажин <prosazhin@yandexru> (https://prosazhin.ru)",
   "license": "MIT",
@@ -40,7 +40,8 @@
   "dependencies": {},
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build": "rollup -c"
+    "build-storybook": "build-storybook -o ./public/storybook",
+    "build-components": "rollup -c",
+    "build": "rollup -c && build-storybook -o ./public/storybook"
   }
 }
