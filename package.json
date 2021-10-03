@@ -1,0 +1,46 @@
+{
+  "name": "prosazhin-react-base-components-test",
+  "version": "0.1.1",
+  "main": "build/index.js",
+  "repository": "git@github.com:prosazhin/prosazhin-react-base-components.git",
+  "author": "Евгений Сажин <prosazhin@yandexru> (https://prosazhin.ru)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@storybook/addon-actions": "^6.3.9",
+    "@storybook/addon-essentials": "^6.3.9",
+    "@storybook/addon-links": "^6.3.9",
+    "@storybook/builder-webpack5": "^6.3.9",
+    "@storybook/manager-webpack5": "^6.3.9",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.3.9",
+    "autoprefixer": "^10.3.6",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.3.8",
+    "prosazhin-base-styles": "^1.0.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.58.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.56.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {},
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "rollup -c"
+  }
+}

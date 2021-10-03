@@ -1,0 +1,26 @@
+@import 'prosazhin-base-styles/styles.scss';
+
+.button {
+    display: inline-block;
+    text-align: center;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    color: $white;
+    transition: all .2s ease;
+    user-select: none;
+    font-size: 2rem;
+    line-height: 4rem;
+    font-weight: $font_bold;
+    padding: 1rem 4rem;
+    background-color: $blue_a700;
+    text-decoration: none;
+
+    &:hover, &:active, &:focus {
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $blue_a700;
+    }
+}
