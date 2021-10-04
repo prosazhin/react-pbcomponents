@@ -19,7 +19,6 @@ export default [
 			postcss({
 				extensions: ['.scss'],
 				modules: true,
-				autoModules: true,
 				inject: true,
 				minimize: true,
 				exec: true,

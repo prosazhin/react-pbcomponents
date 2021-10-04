@@ -1573,7 +1573,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.3.9", "@storybook/addons@^6.3.0":
+"@storybook/addons@6.3.9", "@storybook/addons@^6.3.0", "@storybook/addons@^6.3.9":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.9.tgz#e12c8d4351b861d67cb6b8d64ed33b1f6b90994f"
   integrity sha512-5tRkeHgdb/I/rp3GBkxonDLVsA45Vpgh/vFrsecrS/98wkSYfPEhqrDGLOosJHFrN3J2pznAuNFaA05158uBsw==
