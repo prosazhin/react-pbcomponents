@@ -1,0 +1,2 @@
+import e from"react";!function(e,t){void 0===t&&(t={});var n=t.insertAt;if(e&&"undefined"!=typeof document){var i=document.head||document.getElementsByTagName("head")[0],a=document.createElement("style");a.type="text/css","top"===n&&i.firstChild?i.insertBefore(a,i.firstChild):i.appendChild(a),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(document.createTextNode(e))}}("@tailwind base;@tailwind components;@tailwind utilities;",{insertAt:"top"});const t=({label:t})=>e.createElement("button",{className:"bg-black"},t);export{t as Button};
+//# sourceMappingURL=index.mjs.map

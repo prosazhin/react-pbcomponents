@@ -1,45 +1,50 @@
-import babel from 'rollup-plugin-babel';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
-import external from 'rollup-plugin-peer-deps-external';
-import { terser } from 'rollup-plugin-terser';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-import autoprefixer from 'autoprefixer';
-import path from 'path';
+import terser from '@rollup/plugin-terser';
+import dts from 'rollup-plugin-dts';
+
+import packageJson from './package.json' assert { type: 'json' };
 
 export default [
-	{
-		input: './src/index.js',
-		output: [
-			{
-				file: 'public/components/index.js',
-				format: 'cjs',
-			}
-		],
-		plugins: [
-			postcss({
-				extensions: ['.scss'],
-				modules: true,
-				inject: true,
-				minimize: true,
-				exec: true,
-				use: [
-					[ 'sass',
-						{
-							includePaths: [path.resolve('node_modules')],
-						},
-					],
-				],
-				plugins: [
-					autoprefixer,
-				],
-			}),
-			babel({
-				exclude: 'node_modules/**',
-				presets: ['@babel/preset-react']
-			}),
-			external(),
-			resolve(),
-			terser(),
-		]
-	}
+  {
+    input: './src/index.ts',
+    output: [
+      {
+        file: packageJson.main,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: packageJson.module,
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: './tsconfig.json' }),
+      postcss({
+        config: {
+          path: './postcss.config.js',
+        },
+        extensions: ['.css'],
+        minimize: true,
+        inject: {
+          insertAt: 'top',
+        },
+      }),
+      terser(),
+    ],
+  },
+  {
+    input: 'public/types/index.d.ts',
+    output: [{ file: 'public/index.d.ts', format: 'es' }],
+    plugins: [dts()],
+    external: [/\.(css|less|scss)$/],
+  },
 ];

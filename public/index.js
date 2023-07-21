@@ -1,0 +1,2 @@
+"use strict";var e=require("react");!function(e,t){void 0===t&&(t={});var i=t.insertAt;if(e&&"undefined"!=typeof document){var n=document.head||document.getElementsByTagName("head")[0],a=document.createElement("style");a.type="text/css","top"===i&&n.firstChild?n.insertBefore(a,n.firstChild):n.appendChild(a),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(document.createTextNode(e))}}("@tailwind base;@tailwind components;@tailwind utilities;",{insertAt:"top"});exports.Button=({label:t})=>e.createElement("button",{className:"bg-black"},t);
+//# sourceMappingURL=index.js.map

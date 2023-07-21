@@ -1,1 +1,1 @@
-# prosazhin-react-base-components
+# react-pbcomponents – React Prosazhin Base Components
