@@ -20,7 +20,9 @@
     "build:storybook": "storybook build",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
     "lint:fix": "eslint --fix src/**/*.ts{,x}",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
+    "type-check": "tsc",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -30,6 +32,8 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-eslint": "^9.0.4",
     "@rollup/plugin-node-resolve": "^15.1.0",
@@ -50,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "autoprefixer": "^10.4.14",
+    "clsx": "^2.0.0",
     "concurrently": "^8.2.0",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
@@ -58,6 +63,8 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
     "pbstyles": "^1.2.1",
     "postcss": "^8.4.26",
     "prettier": "^3.0.0",
