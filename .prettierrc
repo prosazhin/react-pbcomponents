@@ -6,5 +6,6 @@
   "tabWidth": 2,
   "jsxSingleQuote": true,
   "singleQuote": true,
+  "tailwindConfig": "./tailwind.config.js",
   "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -5,19 +5,15 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react/recommended", "plugin:react-hooks/recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:prettier/recommended", "plugin:tailwindcss/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021
   },
-  "plugins": ["react-refresh", "@typescript-eslint", "prettier"],
+  "plugins": ["react-refresh", "@typescript-eslint", "prettier", "tailwindcss"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "vueIndentScriptAndStyle": false
-      }
-    ],
+    "prettier/prettier": "off",
+    "tailwindcss/classnames-order": "off",
     "curly": "error",
     "no-shadow": "error",
     "no-nested-ternary": "error",
