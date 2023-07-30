@@ -1,27 +1,37 @@
 {
   "name": "react-pbcomponents",
   "version": "0.0.1",
-  "repository": "git@github.com:prosazhin/react-pbcomponents.git",
+  "description": "Express server project using compression",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prosazhin/react-pbcomponents.git"
+  },
   "author": "Evgenii Sazhin <prosazhin@gmail.com> (https://prosazhin.ru)",
   "license": "MIT",
   "type": "module",
-  "types": "public/index.d.ts",
-  "main": "public/index.js",
-  "module": "public/index.mjs",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
-    "public"
+    "dist"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:rollup\" \"npm run dev:storybook\"",
-    "build": "npm run build:rollup && npm run build:storybook",
-    "dev:rollup": "rollup -c --watch",
-    "build:rollup": "rollup -c",
+    "dev": "concurrently \"npm run dev:lib\" \"npm run dev:storybook\"",
+    "build": "npm run build:lib && npm run build:storybook",
+    "dev:lib": "vite build --watch",
+    "build:lib": "tsc && vite build",
     "dev:storybook": "storybook dev -p 6006 --docs",
     "build:storybook": "storybook build",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
-    "lint:fix": "eslint --fix src/**/*.ts{,x}",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
-    "type-check": "tsc",
+    "lint": "tsc --noEmit && eslint src",
+    "lint:fix": "eslint --fix src --ext .ts,.tsx",
+    "lint:markup": "tsc --noEmit",
+    "format": "prettier --write src",
     "prepare": "husky install"
   },
   "peerDependencies": {
@@ -29,40 +39,33 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.5",
-    "@commitlint/cli": "^17.6.7",
-    "@commitlint/config-conventional": "^17.6.7",
-    "@rollup/plugin-commonjs": "^25.0.3",
-    "@rollup/plugin-eslint": "^9.0.4",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "@storybook/addon-essentials": "^7.1.0",
-    "@storybook/addon-interactions": "^7.1.0",
-    "@storybook/addon-links": "^7.1.0",
-    "@storybook/addon-onboarding": "^1.0.7",
-    "@storybook/blocks": "^7.1.0",
-    "@storybook/react": "^7.1.0",
-    "@storybook/react-webpack5": "^7.1.0",
+    "@heroicons/react": "^2.0.18",
+    "@storybook/addon-essentials": "^7.1.1",
+    "@storybook/addon-interactions": "^7.1.1",
+    "@storybook/addon-links": "^7.1.1",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.1.1",
+    "@storybook/react": "^7.1.1",
+    "@storybook/react-vite": "^7.1.1",
     "@storybook/testing-library": "^0.2.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/react": "^18.2.15",
+    "@types/node": "^20.4.5",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
+    "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.14",
-    "clsx": "^2.0.0",
     "concurrently": "^8.2.0",
     "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint-plugin-storybook": "^0.6.13",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.3",
     "pbstyles": "^1.2.1",
@@ -71,13 +74,48 @@
     "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.26.3",
-    "rollup-plugin-dts": "^5.3.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "storybook": "^7.1.0",
+    "storybook": "^7.1.1",
     "tailwindcss": "^3.3.3",
     "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.5",
+    "vite-plugin-css-injected-by-js": "^3.2.1",
+    "vite-plugin-dts": "^3.4.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/**/*.{md,mdx}": [
+      "prettier --write"
+    ],
+    "stories/**/*.{md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "ui",
+    "components",
+    "storybook",
+    "vite",
+    "eslint",
+    "prettier",
+    "husky"
+  ],
+  "contributors": [
+    {
+      "name": "example",
+      "email": "example@example.com",
+      "url": "https://example.com"
+    }
+  ],
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

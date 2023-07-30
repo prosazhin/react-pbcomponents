@@ -1,3 +1,3 @@
-import './assets/index.css';
+import '@/assets/index.css';
 
-export * from './components';
+export * from '@/components';
