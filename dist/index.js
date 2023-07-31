@@ -627,7 +627,7 @@ Check the top-level render call using <` + t + ">.");
 }
 process.env.NODE_ENV === "production" ? H.exports = ir() : H.exports = ur();
 var sr = H.exports;
-const lr = ({ label: w }) => /* @__PURE__ */ sr.jsx("button", { className: "px-8 py-2 text-white rounded-full bg-primary-main", children: w });
+const lr = ({ label: w }) => /* @__PURE__ */ sr.jsx("button", { className: "rounded-full bg-primary-main px-8 py-2 text-white", children: w });
 export {
   lr as Button
 };

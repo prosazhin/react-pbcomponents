@@ -1,7 +1,7 @@
 {
   "name": "react-pbcomponents",
   "version": "0.0.1",
-  "description": "Express server project using compression",
+  "description": "UI component library for React with Typescript and Tailwind",
   "repository": {
     "type": "git",
     "url": "https://github.com/prosazhin/react-pbcomponents.git"
@@ -21,6 +21,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:lib\" \"npm run dev:storybook\"",
     "build": "npm run build:lib && npm run build:storybook",
