@@ -681,7 +681,7 @@ const hr = _.forwardRef(mr), Rr = hr, Oe = {
   S: "h-4 w-4",
   M: "h-6 w-6",
   L: "h-7 w-7"
-}, yr = ({ size: f, color: c, label: g, isRightIcon: h, isLeftIcon: O, tagName: C }) => /* @__PURE__ */ F.jsxs("div", { className: "flex flex-row gap-2 items-center", children: [
+}, yr = ({ size: f, color: c, label: g, isRightIcon: h, isLeftIcon: O, tagName: C }) => /* @__PURE__ */ F.jsxs("div", { className: "flex flex-row items-center gap-2", children: [
   O && /* @__PURE__ */ F.jsx(gr, { className: `text-black ${Oe[f]}` }),
   g && /* @__PURE__ */ F.jsx(dr, { size: f, color: c, label: g, tagName: C }),
   h && g && /* @__PURE__ */ F.jsx(Rr, { className: `text-black ${Oe[f]}` })
