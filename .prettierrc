@@ -2,7 +2,7 @@
   "bracketSpacing": true,
   "semi": true,
   "trailingComma": "all",
-  "printWidth": 200,
+  "printWidth": 120,
   "tabWidth": 2,
   "jsxSingleQuote": true,
   "singleQuote": true,
