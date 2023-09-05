@@ -12,7 +12,13 @@ const meta: Meta<typeof Text> = {
   },
   argTypes: {
     size: {
-      options: ['SR','SM','MR','MM','LR','LM'],
+      options: ['s','m','l'],
+      control: {
+        type: 'select',
+      },
+    },
+    weight: {
+      options: ['medium','normal'],
       control: {
         type: 'select',
       },
@@ -22,12 +28,6 @@ const meta: Meta<typeof Text> = {
         type: 'text',
       },
     },
-    color: {
-      options: ['base-main', 'blue-50', 'secondary-main'],
-      control: {
-        type: 'select',
-      },
-    }
   }
 };
 
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof Text>;
 
 export const Variant: Story = {
   args: {
-    size: 'SR',
-    color: 'base-main'
+    size: 's',
+    weight: 'normal'
   }
 };

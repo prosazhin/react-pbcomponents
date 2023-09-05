@@ -1,26 +1,24 @@
-// import { createElement} from 'react';
+const fontSize = {
+  s: 't3',
+  m: 't4',
+  l: 't2',
+};
 
-const TextVariants = {
-  SR: 't4',
-  SM: 'tm4',
-  MR: 't3',
-  MM: 'tm3',
-  LR: 'h4',
-  LM: 'tm2',
+const fontWeight = {
+  medium: 'medium',
+  regular: 'normal',
 };
 
 export type Props = {
   tagName?: string;
-  size: 'SR' | 'SM' | 'MR' | 'MM' | 'LR' | 'LM';
+  size: 's' | 'm' | 'l';
+  weight: 'medium' | 'regular';
   label: string;
-  color: 'base-main' | 'blue-50' | 'secondary-main';
+  className: string;
 };
 
-const Text = ({ size, color, label }: Props) => {
-  return <p className={`${color} text-${TextVariants[size]}`}>{label}</p>;
-  // return createElement(tagName, {
-  //   ...{size, color, label}
-  // })
+const Text = ({ size, label, weight }: Props) => {
+  return <p className={`text-inherit text-${fontSize[size]} text-${fontWeight[weight]}`}>{label}</p>;
 };
 
 export default Text;

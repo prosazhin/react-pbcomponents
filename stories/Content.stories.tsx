@@ -7,7 +7,7 @@ const meta: Meta<typeof Content> = {
   tags: ['autodocs'],
   argTypes: {
     size: {
-      options: ['S', 'M', 'L'],
+      options: ['s', 'm', 'l'],
       control: {
         type: 'select',
       },
@@ -16,15 +16,9 @@ const meta: Meta<typeof Content> = {
           type: 'text',
         },
       },
-      color: {
-        options: ['text-black', 'text-white', 'text-gray-50'],
-        control: {
-          type: 'select',
-        },
       },
 
     }
-  }
 };
 
 export default meta;
@@ -33,9 +27,8 @@ type Story = StoryObj<typeof Content>;
 
 export const Variant: Story = {
   args: {
-    size: 'S',
+    size: 's',
     label: 'Content',
-    color: 'text-black',
     isRightIcon: true,
     isLeftIcon: true,
   }
