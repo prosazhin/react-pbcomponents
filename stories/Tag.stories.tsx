@@ -18,6 +18,10 @@ const meta: Meta<typeof Tag> = {
       options: ['light', 'border'],
       control: { type: 'inline-radio' },
     },
+    isActive: {
+      options: [true, false],
+      control: { type: 'inline-radio' },
+    },
     leftIcon: {
       options: Object.keys(icons),
       mapping: icons,
@@ -43,10 +47,6 @@ const meta: Meta<typeof Tag> = {
       },
     },
     className: { control: 'text' },
-    isActive: {
-      options: [true, false],
-      control: {type: 'inline-radio'},
-    }
   },
 };
 
@@ -58,9 +58,10 @@ export const Variant: Story = {
   args: {
     children: 'Tag',
     size: 'xs',
+    theme: 'light',
+    isActive: false,
     leftIcon: undefined,
     rightIcon: undefined,
     className: '',
-    isActive: false,
   },
 };

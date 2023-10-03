@@ -3,8 +3,8 @@ import Content from '@/components/helpers/content';
 import HeroIconType from '@/types/icon';
 
 const sizes = {
-  xs: 'py-1 px-2',
-  s: 'py-2 px-3',
+  xs: 'py-[3px] px-[8px]',
+  s: 'py-[7px] px-[12px]',
 };
 
 const themes = {
@@ -28,13 +28,9 @@ const Tag = ({ isActive, children, size, theme, leftIcon, rightIcon, className }
   <button
     type='button'
     className={clsx(
-      'box-border inline-flex w-max cursor-pointer items-center justify-center rounded-full border transition-colors',
+      'box-border inline-flex w-max cursor-pointer flex-nowrap items-center justify-center rounded-full border transition-colors',
       sizes[size],
       isActive ? active : themes[theme],
-      `${
-        isActive &&
-        'border-primary-main bg-primary-main text-white hover:!border-primary-darker hover:!bg-primary-darker'
-      }`,
       className,
     )}
   >
