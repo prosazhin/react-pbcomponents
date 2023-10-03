@@ -3,44 +3,43 @@ import Content from '@/components/helpers/content';
 import HeroIconType from '@/types/icon';
 
 const sizes = {
-  xs: 'py-1 px-2 rounded-full',
-  s: 'py-2 px-3 rounded-full',
+  xs: 'py-1 px-2',
+  s: 'py-2 px-3',
 };
 
-const colores = {
-  light: 'bg-primary-lighter',
-  border: 'border border-secondary-light',
-};
-
-const hover = {
-  light: 'hover:bg-primary-light',
-  border: 'hover:border-secondary-main',
+const themes = {
+  light: 'bg-primary-lighter  hover:bg-primary-light',
+  border: 'border border-secondary-light hover:border-primary-main',
 };
 
 export interface TagProps {
   isActive: boolean;
   children: string;
   size: 'xs' | 's';
-  theme?: 'light' | 'border';
+  theme: 'light' | 'border';
   leftIcon?: HeroIconType;
   rightIcon?: HeroIconType;
   className?: string;
 }
 
-const Tag = ({ isActive, children, size, theme = 'light', leftIcon, rightIcon, className }: TagProps) => (
-  <span
+const Tag = ({ isActive, children, size, theme, leftIcon, rightIcon, className }: TagProps) => (
+  <button
+    type='button'
     className={clsx(
-      `${isActive && 'bg-primary-main text-white hover:bg-primary-darker'}`,
+      'box-border inline-flex w-max cursor-pointer items-center justify-center rounded-full transition-colors',
       sizes[size],
-      colores[theme],
-      hover[theme],
-      'flex w-max items-center hover:ease-in',
+      themes[theme],
+      `${
+        isActive &&
+        'border-primary-main bg-primary-main text-white hover:!border-primary-darker hover:!bg-primary-darker'
+      }`,
       className,
     )}
   >
-    {/* eslint-disable-next-line react/no-children-prop */}
-    <Content size='s' children={children} leftIcon={leftIcon} rightIcon={rightIcon} medium={true} />
-  </span>
+    <Content size='s' leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
+      {children}
+    </Content>
+  </button>
 );
 
 export default Tag;
