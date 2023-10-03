@@ -8,9 +8,11 @@ const sizes = {
 };
 
 const themes = {
-  light: 'bg-primary-lighter  hover:bg-primary-light',
-  border: 'border border-secondary-light hover:border-primary-main',
+  light: 'bg-primary-lighter border-primary-lighter hover:bg-primary-light hover:border-primary-light',
+  border: 'border-secondary-light hover:border-primary-main',
 };
+
+const active = 'border-primary-main bg-primary-main text-white hover:!border-primary-darker hover:!bg-primary-darker';
 
 export interface TagProps {
   isActive: boolean;
@@ -26,9 +28,9 @@ const Tag = ({ isActive, children, size, theme, leftIcon, rightIcon, className }
   <button
     type='button'
     className={clsx(
-      'box-border inline-flex w-max cursor-pointer items-center justify-center rounded-full transition-colors',
+      'box-border inline-flex w-max cursor-pointer items-center justify-center rounded-full border transition-colors',
       sizes[size],
-      themes[theme],
+      isActive ? active : themes[theme],
       `${
         isActive &&
         'border-primary-main bg-primary-main text-white hover:!border-primary-darker hover:!bg-primary-darker'
