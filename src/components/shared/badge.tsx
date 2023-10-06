@@ -9,10 +9,10 @@ const sizes = {
 
 const themes = {
   filled: {
-    primary: 'bg-primary-main text-white',
-    secondary: 'bg-secondary-main text-white',
-    success: 'bg-success-main text-white',
-    danger: 'bg-danger-main text-white',
+    primary: 'bg-primary-main border-primary-main text-white',
+    secondary: 'bg-secondary-main border-secondary-main text-white',
+    success: 'bg-success-main border-success-main text-white',
+    danger: 'bg-danger-main border-danger-main text-white',
   },
   light: {
     primary: 'bg-primary-lighter border-primary-lighter text-primary-main',
@@ -39,10 +39,9 @@ export interface BadgeProps {
 }
 
 const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }: BadgeProps) => (
-  <button
-    type='button'
+  <span
     className={clsx(
-      'box-border inline-flex w-max cursor-pointer flex-nowrap items-center justify-center rounded-full border transition-colors',
+      'box-border inline-flex w-max cursor-default flex-nowrap items-center justify-center rounded-full border transition-colors',
       sizes[size],
       themes[theme][color],
       className,
@@ -51,7 +50,7 @@ const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }:
     <Content size='s' leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
       {children}
     </Content>
-  </button>
+  </span>
 );
 
 export default Badge;
