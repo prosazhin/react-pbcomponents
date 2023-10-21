@@ -1,9 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../dist';
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const icons = { undefined, ArrowLongLeftIcon, ArrowLongRightIcon };
-
+import { Button } from '../src';
+import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -20,40 +18,17 @@ const meta: Meta<typeof Button> = {
       control: { type: 'inline-radio' },
     },
     color: {
-      options: ['primary','secondary','success','danger'],
+      options: ['primary', 'secondary', 'success', 'danger'],
       control: { type: 'inline-radio' },
     },
     isDisabled: {
       control: 'boolean',
     },
-    leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
-    rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     className: { control: 'text' },
   },
 };
-
 
 export default meta;
 
@@ -67,6 +42,5 @@ export const Variant: Story = {
     color: 'primary',
     leftIcon: undefined,
     rightIcon: undefined,
-    className: '',
-  }
+  },
 };

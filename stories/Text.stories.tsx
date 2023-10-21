@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Text } from '../dist';
+
+import { Text } from '../src';
 
 const meta: Meta<typeof Text> = {
   title: 'Helpers/Text',
@@ -25,6 +26,5 @@ export const Variant: Story = {
     children: 'label',
     size: 'm',
     medium: false,
-    className: '',
   },
 };

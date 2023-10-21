@@ -1,6 +1,7 @@
+import { DefaultPropsType, HeroIconType } from '@/types';
 import clsx from 'clsx';
+
 import Content from '@/components/helpers/content';
-import HeroIconType from '@/types/icon';
 
 const sizes = {
   xs: 'py-[3px] px-[8px]',
@@ -28,17 +29,15 @@ const themes = {
   },
 };
 
-export interface BadgeProps {
-  children: string;
+export type Props = DefaultPropsType<{
   size: 'xs' | 's';
   theme: 'filled' | 'light' | 'border';
   color: 'primary' | 'secondary' | 'success' | 'danger';
   leftIcon?: HeroIconType;
   rightIcon?: HeroIconType;
-  className?: string;
-}
+}>;
 
-const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }: BadgeProps) => (
+const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }: Props) => (
   <span
     className={clsx(
       'box-border inline-flex w-max cursor-default flex-nowrap items-center justify-center rounded-full border transition-colors',

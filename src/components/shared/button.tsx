@@ -1,6 +1,7 @@
+import { DefaultPropsType, HeroIconType } from '@/types';
 import clsx from 'clsx';
+
 import Content from '@/components/helpers/content';
-import HeroIconType from '@/types/icon';
 
 const sizes = {
   xs: 'py-[4px] px-[8px]',
@@ -67,19 +68,29 @@ const THEME_HOVER = {
   },
 };
 
-export type ButtonProps = {
-  children: string;
+export type Props = DefaultPropsType<{
+  as?: React.ElementType;
   size: 'xs' | 's' | 'm' | 'l';
   theme: 'filled' | 'light' | 'border' | 'ghost';
   color: 'primary' | 'secondary' | 'success' | 'danger';
   leftIcon?: HeroIconType;
   rightIcon?: HeroIconType;
-  className?: string;
   isDisabled?: boolean;
-};
+}>;
 
-const Button = ({ children, size, theme, color, className, leftIcon, rightIcon, isDisabled = false }: ButtonProps) => (
-  <button
+const Button = ({
+  as: Component = 'button',
+  children,
+  size,
+  theme,
+  color,
+  className,
+  leftIcon,
+  rightIcon,
+  isDisabled = false,
+  ...rest
+}: Props) => (
+  <Component
     className={clsx(
       'box-border inline-flex w-max flex-nowrap items-center justify-center rounded-full border transition-colors',
       { 'cursor-default disabled:opacity-75': isDisabled, [THEME_HOVER[theme][color]]: !isDisabled },
@@ -87,11 +98,12 @@ const Button = ({ children, size, theme, color, className, leftIcon, rightIcon, 
       isDisabled ? themes[theme].disabled : themes[theme][color],
       className,
     )}
+    {...rest}
   >
     <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon}>
       {children}
     </Content>
-  </button>
+  </Component>
 );
 
 export default Button;

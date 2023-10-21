@@ -1,6 +1,7 @@
+import { DefaultPropsType, HeroIconType } from '@/types';
 import clsx from 'clsx';
+
 import Text from '@/components/helpers/text';
-import HeroIconType from '@/types/icon';
 
 const sizes = {
   s: 'space-x-[6px]',
@@ -14,16 +15,14 @@ const iconSizes = {
   l: 'h-[28px] w-[28px]',
 };
 
-export interface ContentProps {
-  children?: string;
+export type Props = DefaultPropsType<{
   size: 's' | 'm' | 'l';
   medium?: boolean;
   leftIcon?: HeroIconType;
   rightIcon?: HeroIconType;
-  className?: string;
-}
+}>;
 
-const Content = ({ children, size, medium, leftIcon: LeftIcon, rightIcon: RightIcon, className }: ContentProps) => {
+const Content = ({ children, size, medium, leftIcon: LeftIcon, rightIcon: RightIcon, className }: Props) => {
   return (
     <span className={clsx('inline-flex w-max flex-nowrap items-center', sizes[size], className)}>
       {LeftIcon && <LeftIcon className={clsx('text-inherit', iconSizes[size])} />}

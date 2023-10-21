@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Content } from '../dist';
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const icons = { undefined, ArrowLongLeftIcon, ArrowLongRightIcon };
+import { Content } from '../src';
+import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Content> = {
   title: 'Helpers/Content',
@@ -15,30 +14,8 @@ const meta: Meta<typeof Content> = {
       control: { type: 'inline-radio' },
     },
     medium: { control: 'boolean' },
-    leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
-    rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     className: { control: 'text' },
   },
 };
@@ -54,6 +31,5 @@ export const Variant: Story = {
     medium: false,
     leftIcon: undefined,
     rightIcon: undefined,
-    className: '',
   },
 };

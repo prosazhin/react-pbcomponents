@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Tag } from '../dist';
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const icons = { undefined, ArrowLongLeftIcon, ArrowLongRightIcon };
+import { Tag } from '../src';
+import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
@@ -22,30 +21,8 @@ const meta: Meta<typeof Tag> = {
       options: [true, false],
       control: { type: 'inline-radio' },
     },
-    leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
-    rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     className: { control: 'text' },
   },
 };
@@ -62,6 +39,5 @@ export const Variant: Story = {
     isActive: false,
     leftIcon: undefined,
     rightIcon: undefined,
-    className: '',
   },
 };

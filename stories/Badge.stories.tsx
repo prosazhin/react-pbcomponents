@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Badge } from '../dist';
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const icons = { undefined, ArrowLongLeftIcon, ArrowLongRightIcon };
+import { Badge } from '../src';
+import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
@@ -19,33 +18,11 @@ const meta: Meta<typeof Badge> = {
       control: { type: 'inline-radio' },
     },
     color: {
-      options: ['primary','secondary','success','danger'],
+      options: ['primary', 'secondary', 'success', 'danger'],
       control: { type: 'inline-radio' },
     },
-    leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
-    rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     className: { control: 'text' },
   },
 };
@@ -62,6 +39,5 @@ export const Variant: Story = {
     color: 'primary',
     leftIcon: undefined,
     rightIcon: undefined,
-    className: '',
   },
 };
