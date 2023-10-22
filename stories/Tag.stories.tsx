@@ -1,25 +1,25 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Tag } from '../src';
+import { Tag as TagComponent } from '../src';
 import { getIconsArg } from './arg-types';
 
-const meta: Meta<typeof Tag> = {
+const meta: Meta<typeof TagComponent> = {
   title: 'Components/Tag',
-  component: Tag,
+  component: TagComponent,
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
     size: {
       options: ['xs', 's'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     theme: {
       options: ['light', 'border'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     isActive: {
       options: [true, false],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
@@ -29,9 +29,9 @@ const meta: Meta<typeof Tag> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Tag>;
+type Story = StoryObj<typeof TagComponent>;
 
-export const Variant: Story = {
+export const Tag: Story = {
   args: {
     children: 'Tag',
     size: 'xs',

@@ -1,25 +1,25 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../src';
+import { Button as ButtonComponent } from '../src';
 import { getIconsArg } from './arg-types';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ButtonComponent> = {
   title: 'Components/Button',
-  component: Button,
+  component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
     size: {
       options: ['xs', 's', 'm', 'l'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     theme: {
       options: ['filled', 'light', 'border', 'ghost'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     color: {
       options: ['primary', 'secondary', 'success', 'danger'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     isDisabled: {
       control: 'boolean',
@@ -32,9 +32,9 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof ButtonComponent>;
 
-export const Variant: Story = {
+export const Button: Story = {
   args: {
     children: 'text',
     size: 'm',
@@ -42,5 +42,6 @@ export const Variant: Story = {
     color: 'primary',
     leftIcon: undefined,
     rightIcon: undefined,
+    isDisabled: false,
   },
 };

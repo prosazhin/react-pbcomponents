@@ -30,7 +30,7 @@
     "dev:lib": "vite build --watch",
     "build:lib": "tsc && vite build",
     "dev:storybook": "storybook dev -p 6006 --docs",
-    "build:storybook": "storybook build",
+    "build:storybook": "storybook build --docs",
     "lint": "tsc --noEmit && eslint src",
     "lint:fix": "eslint --fix src --ext .ts,.tsx",
     "lint:markup": "tsc --noEmit",

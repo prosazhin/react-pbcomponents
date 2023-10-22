@@ -1,17 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Content } from '../src';
+import { Content as ContentComponent } from '../src';
 import { getIconsArg } from './arg-types';
 
-const meta: Meta<typeof Content> = {
+const meta: Meta<typeof ContentComponent> = {
   title: 'Helpers/Content',
-  component: Content,
+  component: ContentComponent,
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
     size: {
       options: ['s', 'm', 'l'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     medium: { control: 'boolean' },
     leftIcon: getIconsArg(),
@@ -22,9 +22,9 @@ const meta: Meta<typeof Content> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Content>;
+type Story = StoryObj<typeof ContentComponent>;
 
-export const Variant: Story = {
+export const Content: Story = {
   args: {
     children: 'Content',
     size: 'm',

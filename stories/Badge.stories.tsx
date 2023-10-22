@@ -11,15 +11,15 @@ const meta: Meta<typeof BadgeComponent> = {
     children: { control: 'text' },
     size: {
       options: ['xs', 's'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     theme: {
       options: ['filled', 'light', 'border'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     color: {
       options: ['primary', 'secondary', 'success', 'danger'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
