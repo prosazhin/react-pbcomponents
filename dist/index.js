@@ -736,17 +736,7 @@ const Oe = {
 }, yr = {
   light: "bg-primary-lighter hover:bg-primary-light",
   border: "before:border-secondary-light hover:before:border-primary-main"
-}, wr = ({
-  as: l = "button",
-  isActive: s,
-  children: f,
-  size: i,
-  theme: m,
-  leftIcon: y,
-  rightIcon: E,
-  className: _,
-  ...d
-}) => /* @__PURE__ */ R.jsx(
+}, wr = ({ as: l = "button", isActive: s, children: f, size: i, theme: m, leftIcon: y, rightIcon: E, className: _, ...d }) => /* @__PURE__ */ R.jsx(
   l,
   {
     className: P(
