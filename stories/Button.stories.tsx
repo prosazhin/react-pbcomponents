@@ -36,8 +36,8 @@ type Story = StoryObj<typeof ButtonComponent>;
 
 export const Button: Story = {
   args: {
-    children: 'text',
-    size: 'm',
+    children: 'Button',
+    size: 's',
     theme: 'filled',
     color: 'primary',
     leftIcon: undefined,

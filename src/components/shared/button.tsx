@@ -4,67 +4,40 @@ import clsx from 'clsx';
 import Content from '@/components/helpers/content';
 
 const sizes = {
-  xs: 'py-[4px] px-[8px]',
-  s: 'py-[8px] px-[12px]',
-  m: 'py-[12px] px-[16px]',
-  l: 'py-[18px] px-[24px]',
+  xs: 'py-[4px] px-[8px] rounded-sm before:rounded-sm',
+  s: 'py-[8px] px-[12px] rounded-md before:rounded-md',
+  m: 'py-[12px] px-[16px] rounded-lg before:rounded-lg',
+  l: 'py-[18px] px-[24px] rounded-xl before:rounded-xl',
 };
 
 const themes = {
   filled: {
-    primary: 'bg-primary-main border-primary-main text-white',
-    secondary: 'bg-secondary-main border-secondary-main text-white',
-    success: 'bg-success-main border-success-main text-white',
-    danger: 'bg-danger-main border-danger-main text-white',
-    disabled: 'bg-secondary-lighter border-secondary-lighter text-base-light',
+    primary: 'bg-primary-main text-white hover:bg-primary-darker',
+    secondary: 'bg-secondary-main text-white hover:bg-secondary-darker',
+    success: 'bg-success-main text-white hover:bg-success-darker',
+    danger: 'bg-danger-main text-white hover:bg-danger-main',
+    disabled: 'bg-secondary-lighter text-base-light',
   },
   light: {
-    primary: 'bg-primary-lighter border-primary-lighter text-primary-main',
-    secondary: 'bg-secondary-lighter border-secondary-lighter text-base-main',
-    success: 'bg-success-lighter border-success-lighter text-success-main',
-    danger: 'bg-danger-lighter border-danger-lighter text-danger-main',
-    disabled: 'bg-secondary-lighter border-secondary-lighter text-base-light',
+    primary: 'bg-primary-lighter text-primary-main hover:bg-primary-light',
+    secondary: 'bg-secondary-lighter text-base-main hover:bg-secondary-light',
+    success: 'bg-success-lighter text-success-main hover:bg-success-light',
+    danger: 'bg-danger-lighter text-danger-main hover:bg-danger-light',
+    disabled: 'bg-secondary-lighter text-base-light',
   },
   border: {
-    primary: 'bg-transparent border-primary-light text-primary-main',
-    secondary: 'bg-transparent border-secondary-light text-base-main',
-    success: 'bg-transparent border-success-light text-success-main',
-    danger: 'bg-transparent border-danger-light text-danger-main',
-    disabled: 'bg-transparent border-secondary-lighter text-base-light',
+    primary: 'before:border-primary-light text-primary-main hover:bg-primary-lighter before:hover:border-primary-lighter',
+    secondary: 'before:border-secondary-light text-base-main hover:bg-secondary-lighter before:hover:border-secondary-lighter',
+    success: 'before:border-success-light text-success-main hover:bg-success-lighter before:hover:border-success-lighter',
+    danger: 'before:border-danger-light text-danger-main hover:bg-danger-lighter before:hover:border-danger-lighter',
+    disabled: 'before:border-secondary-lighter text-base-light',
   },
   ghost: {
-    primary: 'bg-transparent border-transparent text-primary-main',
-    secondary: 'bg-transparent border-transparent text-base-main',
-    success: 'bg-transparent border-transparent text-success-main',
-    danger: 'bg-transparent border-transparent text-danger-main',
-    disabled: 'bg-primary-transparent border-transparent text-base-light',
-  },
-};
-
-const THEME_HOVER = {
-  filled: {
-    primary: 'bg-primary-primary-darker text-white ',
-    secondary: 'bg-secondary-darker text-white',
-    success: 'bg-success-darker text-white',
-    danger: 'bg-danger-main text-white',
-  },
-  light: {
-    primary: 'bg-primary-light text-primary-main',
-    secondary: 'bg-secondary-light text-base-main',
-    success: 'bg-success-light text-success-main',
-    danger: 'bg-danger-light text-danger-main',
-  },
-  border: {
-    primary: 'bg-primary-lighter text-primary-main',
-    secondary: 'bg-secondary-lighter text-base-main',
-    success: 'bg-success-lighter text-success-main',
-    danger: 'bg-danger-lighter text-danger-main',
-  },
-  ghost: {
-    primary: 'bg-primary-transparent text-primary-main',
-    secondary: 'bg-secondary-lighter text-base-main',
-    success: 'bg-success-transparent text-success-main',
-    danger: 'bg-danger-lighter text-danger-main',
+    primary: 'text-primary-main hover:bg-primary-lighter',
+    secondary: 'text-base-main hover:bg-secondary-lighter',
+    success: 'text-success-main hover:bg-success-lighter',
+    danger: 'text-danger-main hover:bg-danger-lighter',
+    disabled: 'text-base-light',
   },
 };
 
@@ -92,15 +65,17 @@ const Button = ({
 }: Props) => (
   <Component
     className={clsx(
-      'box-border inline-flex w-max flex-nowrap items-center justify-center rounded-full border transition-colors',
-      { 'cursor-default disabled:opacity-75': isDisabled, [THEME_HOVER[theme][color]]: !isDisabled },
+      'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:w-full before:h-full before:transition-colors',
       sizes[size],
-      isDisabled ? themes[theme].disabled : themes[theme][color],
+      theme === 'border' ? 'before:border' : '',
+      isDisabled ? `cursor-not-allowed ${themes[theme].disabled}` : themes[theme][color],
       className,
     )}
+    disabled={isDisabled}
+    aria-disabled={isDisabled}
     {...rest}
   >
-    <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon}>
+    <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
       {children}
     </Content>
   </Component>

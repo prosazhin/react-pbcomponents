@@ -10,10 +10,8 @@ const sizes = {
 
 const themes = {
   light: 'bg-primary-lighter hover:bg-primary-light',
-  border: 'before:border before:border-secondary-light hover:before:border-primary-main',
+  border: 'before:border-secondary-light hover:before:border-primary-main',
 };
-
-const active = 'bg-primary-main text-white hover:!bg-primary-darker';
 
 export type Props = DefaultPropsType<{
   as?: React.ElementType;
@@ -24,22 +22,13 @@ export type Props = DefaultPropsType<{
   rightIcon?: HeroIconType;
 }>;
 
-const Tag = ({
-  as: Component = 'button',
-  isActive,
-  children,
-  size,
-  theme,
-  leftIcon,
-  rightIcon,
-  className,
-  ...rest
-}: Props) => (
+const Tag = ({ as: Component = 'button', isActive, children, size, theme, leftIcon, rightIcon, className, ...rest }: Props) => (
   <Component
     className={clsx(
-      'inline-flex relative w-max cursor-pointer flex-nowrap group items-center justify-center rounded-full transition-colors before:absolute before:rounded-full before:w-full before:h-full before:transition-colors',
+      'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center rounded-full transition-colors before:absolute before:rounded-full before:w-full before:h-full before:transition-colors',
       sizes[size],
-      isActive ? active : themes[theme],
+      !isActive && theme === 'border' ? 'before:border' : '',
+      isActive ? 'bg-primary-main text-white hover:bg-primary-darker' : themes[theme],
       className,
     )}
     {...rest}

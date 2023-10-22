@@ -18,8 +18,7 @@ const meta: Meta<typeof TagComponent> = {
       control: { type: 'radio' },
     },
     isActive: {
-      options: [true, false],
-      control: { type: 'radio' },
+      control: 'boolean',
     },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
