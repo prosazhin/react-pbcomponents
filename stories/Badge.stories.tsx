@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Badge } from '../src';
+import { Badge as BadgeComponent } from '../src';
 import { getIconsArg } from './arg-types';
 
-const meta: Meta<typeof Badge> = {
+const meta: Meta<typeof BadgeComponent> = {
   title: 'Components/Badge',
-  component: Badge,
+  component: BadgeComponent,
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
@@ -29,9 +29,9 @@ const meta: Meta<typeof Badge> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Badge>;
+type Story = StoryObj<typeof BadgeComponent>;
 
-export const Variant: Story = {
+export const Badge: Story = {
   args: {
     children: 'Badge',
     size: 'xs',
