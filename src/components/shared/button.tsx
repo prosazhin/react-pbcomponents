@@ -1,3 +1,5 @@
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
+
 import { DefaultPropsType, HeroIconType } from '@/types';
 import clsx from 'clsx';
 
@@ -49,6 +51,7 @@ export type Props = DefaultPropsType<{
   leftIcon?: HeroIconType;
   rightIcon?: HeroIconType;
   isDisabled?: boolean;
+  isLoading?: boolean;
 }>;
 
 const Button = ({
@@ -61,6 +64,7 @@ const Button = ({
   leftIcon,
   rightIcon,
   isDisabled = false,
+  isLoading = false,
   ...rest
 }: Props) => (
   <Component
@@ -75,9 +79,13 @@ const Button = ({
     aria-disabled={isDisabled}
     {...rest}
   >
-    <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
-      {children}
-    </Content>
+    {isLoading ? (
+      <ArrowPathIcon className={clsx(themes[theme][color], 'animate-spin h-4 w-4')} />
+    ) : (
+      <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
+        {children}
+      </Content>
+    )}
   </Component>
 );
 

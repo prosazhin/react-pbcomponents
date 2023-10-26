@@ -24,6 +24,9 @@ const meta: Meta<typeof ButtonComponent> = {
     isDisabled: {
       control: 'boolean',
     },
+    isLoading: {
+      control: 'boolean',
+    },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
     className: { control: 'text' },
@@ -43,5 +46,6 @@ export const Button: Story = {
     leftIcon: undefined,
     rightIcon: undefined,
     isDisabled: false,
+    isLoading: false,
   },
 };
