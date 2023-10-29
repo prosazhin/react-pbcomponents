@@ -1,4 +1,4 @@
-import { DefaultPropsType, HeroIconType } from '@/types';
+import { DefaultPropsType, IconType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -33,8 +33,8 @@ export type Props = DefaultPropsType<{
   size: 'xs' | 's';
   theme: 'filled' | 'light' | 'border';
   color: 'primary' | 'secondary' | 'success' | 'danger';
-  leftIcon?: HeroIconType;
-  rightIcon?: HeroIconType;
+  leftIcon?: IconType;
+  rightIcon?: IconType;
 }>;
 
 const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }: Props) => (

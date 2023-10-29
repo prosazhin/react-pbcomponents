@@ -1,4 +1,4 @@
-import { DefaultPropsType, HeroIconType } from '@/types';
+import { DefaultPropsType, IconType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -18,8 +18,8 @@ export type Props = DefaultPropsType<{
   isActive: boolean;
   size: 'xs' | 's';
   theme: 'light' | 'border';
-  leftIcon?: HeroIconType;
-  rightIcon?: HeroIconType;
+  leftIcon?: IconType;
+  rightIcon?: IconType;
 }>;
 
 const Tag = ({ as: Component = 'button', isActive, children, size, theme, leftIcon, rightIcon, className, ...rest }: Props) => (

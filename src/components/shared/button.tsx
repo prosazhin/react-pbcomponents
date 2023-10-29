@@ -1,9 +1,11 @@
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
+import { useEffect, useRef, useState } from 'react';
 
-import { DefaultPropsType, HeroIconType } from '@/types';
+import { DefaultPropsType, IconType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
+import Icon from '@/components/helpers/icon';
 
 const sizes = {
   xs: 'py-[4px] px-[8px] rounded-sm before:rounded-sm',
@@ -48,8 +50,8 @@ export type Props = DefaultPropsType<{
   size: 'xs' | 's' | 'm' | 'l';
   theme: 'filled' | 'light' | 'border' | 'ghost';
   color: 'primary' | 'secondary' | 'success' | 'danger';
-  leftIcon?: HeroIconType;
-  rightIcon?: HeroIconType;
+  leftIcon?: IconType;
+  rightIcon?: IconType;
   isDisabled?: boolean;
   isLoading?: boolean;
 }>;
@@ -66,27 +68,44 @@ const Button = ({
   isDisabled = false,
   isLoading = false,
   ...rest
-}: Props) => (
-  <Component
-    className={clsx(
-      'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:w-full before:h-full before:transition-colors',
-      sizes[size],
-      theme === 'border' ? 'before:border' : '',
-      isDisabled ? `cursor-not-allowed ${themes[theme].disabled}` : themes[theme][color],
-      className,
-    )}
-    disabled={isDisabled}
-    aria-disabled={isDisabled}
-    {...rest}
-  >
-    {isLoading ? (
-      <ArrowPathIcon className={clsx(themes[theme][color], 'animate-spin h-4 w-4')} />
-    ) : (
-      <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
-        {children}
-      </Content>
-    )}
-  </Component>
-);
+}: Props) => {
+  const ref = useRef<HTMLElement>(null);
+  const [width, setWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (ref && ref.current) {
+      setWidth(ref.current.offsetWidth);
+    }
+  }, [children, size, leftIcon, rightIcon]);
+
+  return (
+    <Component
+      className={clsx(
+        'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:w-full before:h-full before:transition-colors',
+        sizes[size],
+        theme === 'border' ? 'before:border' : '',
+        isDisabled && !isLoading ? `${themes[theme].disabled} !cursor-not-allowed` : themes[theme][color],
+        className,
+      )}
+      disabled={isDisabled || isLoading}
+      aria-disabled={isDisabled || isLoading}
+      ref={ref}
+      style={{ width: isLoading ? width : null }}
+      {...rest}
+    >
+      {isLoading ? (
+        <Icon
+          name={ArrowPathIcon}
+          size={size === 'xs' ? 's' : size}
+          className={clsx(themes[theme][color], 'animate-spin transition')}
+        />
+      ) : (
+        <Content size={size === 'xs' ? 's' : size} leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
+          {children}
+        </Content>
+      )}
+    </Component>
+  );
+};
 
 export default Button;

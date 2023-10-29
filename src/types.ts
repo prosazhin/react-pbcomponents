@@ -1,4 +1,4 @@
-export type HeroIconType = React.ComponentType<
+export type IconType = React.ComponentType<
   React.PropsWithoutRef<React.ComponentProps<'svg'>> & {
     title?: string | undefined;
     titleId?: string | undefined;

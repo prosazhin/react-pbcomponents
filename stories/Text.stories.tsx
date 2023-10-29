@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Text as TextComponent } from '../src';
+import { Text as Component } from '../src';
 
-const meta: Meta<typeof TextComponent> = {
+const meta: Meta<typeof Component> = {
   title: 'Helpers/Text',
-  component: TextComponent,
+  component: Component,
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
@@ -19,7 +19,7 @@ const meta: Meta<typeof TextComponent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof TextComponent>;
+type Story = StoryObj<typeof Component>;
 
 export const Text: Story = {
   args: {
