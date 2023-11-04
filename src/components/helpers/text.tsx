@@ -1,3 +1,4 @@
+import { DefaultPropsType } from '@/types';
 import clsx from 'clsx';
 
 const styles = {
@@ -15,18 +16,13 @@ const styles = {
   },
 };
 
-export interface TextProps {
-  children: string;
+export type Props = DefaultPropsType<{
   size: 's' | 'm' | 'l';
   medium?: boolean;
-  className?: string;
-}
+}>;
 
-const Text = ({ children, size, medium, className }: TextProps) => (
-  <span
-    className={clsx('text-inherit', medium ? styles[size].m : styles[size].r, className)}
-    dangerouslySetInnerHTML={{ __html: children }}
-  />
+const Text = ({ children, size, medium, className }: Props) => (
+  <span className={clsx('text-inherit', medium ? styles[size].m : styles[size].r, className)}>{children}</span>
 );
 
 export default Text;

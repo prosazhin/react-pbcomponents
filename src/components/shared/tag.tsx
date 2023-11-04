@@ -1,43 +1,42 @@
+import { DefaultPropsType, IconType } from '@/types';
 import clsx from 'clsx';
+
 import Content from '@/components/helpers/content';
-import HeroIconType from '@/types/icon';
 
 const sizes = {
-  xs: 'py-[3px] px-[8px]',
-  s: 'py-[7px] px-[12px]',
+  xs: 'py-[4px] px-[8px]',
+  s: 'py-[8px] px-[12px]',
 };
 
 const themes = {
-  light: 'bg-primary-lighter border-primary-lighter hover:bg-primary-light hover:border-primary-light',
-  border: 'border-secondary-light hover:border-primary-main',
+  light: 'bg-primary-lighter hover:bg-primary-light',
+  border: 'before:border-secondary-light hover:before:border-primary-main',
 };
 
-const active = 'border-primary-main bg-primary-main text-white hover:!border-primary-darker hover:!bg-primary-darker';
-
-export interface TagProps {
+export type Props = DefaultPropsType<{
+  as?: React.ElementType;
   isActive: boolean;
-  children: string;
   size: 'xs' | 's';
   theme: 'light' | 'border';
-  leftIcon?: HeroIconType;
-  rightIcon?: HeroIconType;
-  className?: string;
-}
+  leftIcon?: IconType;
+  rightIcon?: IconType;
+}>;
 
-const Tag = ({ isActive, children, size, theme, leftIcon, rightIcon, className }: TagProps) => (
-  <button
-    type='button'
+const Tag = ({ as: Component = 'button', isActive, children, size, theme, leftIcon, rightIcon, className, ...rest }: Props) => (
+  <Component
     className={clsx(
-      'box-border inline-flex w-max cursor-pointer flex-nowrap items-center justify-center rounded-full border transition-colors',
+      'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center rounded-full transition-colors before:absolute before:rounded-full before:w-full before:h-full before:transition-colors',
       sizes[size],
-      isActive ? active : themes[theme],
+      !isActive && theme === 'border' ? 'before:border' : '',
+      isActive ? 'bg-primary-main text-white hover:bg-primary-darker' : themes[theme],
       className,
     )}
+    {...rest}
   >
     <Content size='s' leftIcon={leftIcon} rightIcon={rightIcon} medium={true}>
       {children}
     </Content>
-  </button>
+  </Component>
 );
 
 export default Tag;

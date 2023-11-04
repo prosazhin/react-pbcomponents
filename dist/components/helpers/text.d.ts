@@ -1,8 +1,7 @@
-export interface TextProps {
-    children: string;
+import { DefaultPropsType } from '../../types';
+export type Props = DefaultPropsType<{
     size: 's' | 'm' | 'l';
     medium?: boolean;
-    className?: string;
-}
-declare const Text: ({ children, size, medium, className }: TextProps) => import("react/jsx-runtime").JSX.Element;
+}>;
+declare const Text: ({ children, size, medium, className }: Props) => import("react/jsx-runtime").JSX.Element;
 export default Text;

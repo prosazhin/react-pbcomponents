@@ -1,12 +1,12 @@
-import HeroIconType from '../../types/icon';
-export interface TagProps {
+/// <reference types="react" />
+import { DefaultPropsType, IconType } from '../../types';
+export type Props = DefaultPropsType<{
+    as?: React.ElementType;
     isActive: boolean;
-    children: string;
     size: 'xs' | 's';
     theme: 'light' | 'border';
-    leftIcon?: HeroIconType;
-    rightIcon?: HeroIconType;
-    className?: string;
-}
-declare const Tag: ({ isActive, children, size, theme, leftIcon, rightIcon, className }: TagProps) => import("react/jsx-runtime").JSX.Element;
+    leftIcon?: IconType;
+    rightIcon?: IconType;
+}>;
+declare const Tag: ({ as: Component, isActive, children, size, theme, leftIcon, rightIcon, className, ...rest }: Props) => import("react/jsx-runtime").JSX.Element;
 export default Tag;

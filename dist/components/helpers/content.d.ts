@@ -1,11 +1,9 @@
-import HeroIconType from '../../types/icon';
-export interface ContentProps {
-    children?: string;
+import { DefaultPropsType, IconType } from '../../types';
+export type Props = DefaultPropsType<{
     size: 's' | 'm' | 'l';
     medium?: boolean;
-    leftIcon?: HeroIconType;
-    rightIcon?: HeroIconType;
-    className?: string;
-}
-declare const Content: ({ children, size, medium, leftIcon: LeftIcon, rightIcon: RightIcon, className }: ContentProps) => import("react/jsx-runtime").JSX.Element;
+    leftIcon?: IconType;
+    rightIcon?: IconType;
+}>;
+declare const Content: ({ children, size, medium, leftIcon: LeftIcon, rightIcon: RightIcon, className }: Props) => import("react/jsx-runtime").JSX.Element;
 export default Content;

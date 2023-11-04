@@ -1,67 +1,66 @@
+import React from 'react';
+
 import { Meta, StoryObj } from '@storybook/react';
-import { Tag } from '../dist';
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const icons = { undefined, ArrowLongLeftIcon, ArrowLongRightIcon };
+import { Tag as Component } from '../src';
+import { getIconsArg } from './arg-types';
 
-const meta: Meta<typeof Tag> = {
+const meta: Meta<typeof Component> = {
   title: 'Components/Tag',
-  component: Tag,
+  component: Component,
+  render: ({ ...args }) => {
+    const asArgs = {
+      button: {
+        type: 'button',
+        onClick: () => {
+          // eslint-disable-next-line no-console
+          console.log('Click');
+        },
+      },
+      a: {
+        href: '#',
+        target: '_self',
+      },
+    };
+
+    return <Component {...args} {...asArgs[args.as]} />;
+  },
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
+    as: {
+      options: ['button', 'a'],
+      control: { type: 'radio' },
+    },
     size: {
       options: ['xs', 's'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     theme: {
       options: ['light', 'border'],
-      control: { type: 'inline-radio' },
+      control: { type: 'radio' },
     },
     isActive: {
-      options: [true, false],
-      control: { type: 'inline-radio' },
+      control: 'boolean',
     },
-    leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
-    rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          undefined: 'None',
-          ArrowLongLeftIcon: 'Arrow Left',
-          ArrowLongRightIcon: 'Arrow Right',
-        },
-      },
-    },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     className: { control: 'text' },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Tag>;
+type Story = StoryObj<typeof Component>;
 
-export const Variant: Story = {
+export const Tag: Story = {
   args: {
     children: 'Tag',
+    as: 'button',
     size: 'xs',
     theme: 'light',
     isActive: false,
     leftIcon: undefined,
     rightIcon: undefined,
-    className: '',
   },
 };
