@@ -1,5 +1,4 @@
-import React from 'react';
-
+// import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Button as Component } from '../src';
@@ -8,23 +7,22 @@ import { getIconsArg } from './arg-types';
 const meta: Meta<typeof Component> = {
   title: 'Components/Button',
   component: Component,
-  render: (args) => {
-    const asArgs = {
-      button: {
-        type: 'button',
-        onClick: () => {
-          // eslint-disable-next-line no-console
-          console.log('Click');
-        },
-      },
-      a: {
-        href: '#',
-        target: '_self',
-      },
-    };
-
-    return <Component {...args} {...asArgs[args.as]} />;
-  },
+  // render: (args) => {
+  //   const asArgs = {
+  //     button: {
+  //       type: 'button',
+  //       onClick: () => {
+  //         // eslint-disable-next-line no-console
+  //         console.log('Click');
+  //       },
+  //     },
+  //     a: {
+  //       href: '#',
+  //       target: '_self',
+  //     },
+  //   };
+  //   return <Component {...args} {...asArgs[args.as]} />;
+  // },
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
