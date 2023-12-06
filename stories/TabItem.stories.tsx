@@ -13,6 +13,9 @@ const meta: Meta<typeof Component> = {
     isActive: {
       control: 'boolean',
     },
+    isDisabled: {
+      control: 'boolean',
+    },
     className: { control: 'text' },
   },
 };
@@ -27,5 +30,6 @@ export const Badge: Story = {
     leftIcon: undefined,
     rightIcon: undefined,
     isActive: false,
+    isDisabled: false,
   },
 };
