@@ -11,7 +11,7 @@ export type Props = DefaultPropsType<{
   rightIcon?: IconType;
 }>;
 
-const tabItem = ({
+const Tab = ({
   as: Component = 'button',
   children,
   isActive,
@@ -39,4 +39,4 @@ const tabItem = ({
   </Component>
 );
 
-export default tabItem;
+export default Tab;

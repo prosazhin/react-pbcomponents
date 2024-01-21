@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TabItem as Component } from '../src';
+import { Tab as Component } from '../src';
 import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Component> = {
-  title: 'Components/TabItem',
+  title: 'Helpers/Tab',
   component: Component,
   tags: ['autodocs'],
   argTypes: {
@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Component>;
 
 export const Badge: Story = {
   args: {
-    children: 'TabItem',
+    children: 'Tab',
     leftIcon: undefined,
     rightIcon: undefined,
     isActive: false,

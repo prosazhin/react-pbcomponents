@@ -1,15 +1,17 @@
 import { useState } from 'react';
 
+import { DefaultPropsType } from '@/types';
 import clsx from 'clsx';
 
-import TabItem from '@/components/helpers/tabItem';
+import Tab from '@/components/helpers/tab';
 
-type Props = {
+export type Props = DefaultPropsType<{
   initialActiveTab: number;
   tabs: Array<string>;
   onChange: (activeTab: number) => void;
-};
-export const Tabs = ({ initialActiveTab = 0, tabs, onChange }: Props) => {
+}>;
+
+const Tabs = ({ initialActiveTab = 0, tabs, onChange }: Props) => {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
   function handleTabChange(tabIndex: number): () => void {
@@ -23,7 +25,7 @@ export const Tabs = ({ initialActiveTab = 0, tabs, onChange }: Props) => {
     <div className='border-b-[2px] border-secondary-lighter flex flex-row'>
       {tabs.map((v, i) => (
         <div key={v} onClick={handleTabChange(i)}>
-          <TabItem
+          <Tab
             as='div'
             isActive={activeTab === i}
             className={clsx('tab text-base-main px-[8px] mr-[16px] mb-[-2px] text-tm3', {
@@ -31,9 +33,11 @@ export const Tabs = ({ initialActiveTab = 0, tabs, onChange }: Props) => {
             })}
           >
             {v}
-          </TabItem>
+          </Tab>
         </div>
       ))}
     </div>
   );
 };
+
+export default Tabs;
