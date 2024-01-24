@@ -1,1 +1,1 @@
-export { Text, Icon, Content, Button, Tag, Badge } from './components';
+export { Text, Icon, Content, Chekbox, Button, Tag, Badge } from './components';
