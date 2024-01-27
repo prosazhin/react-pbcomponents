@@ -1,3 +1,7 @@
+/**
+ * Components Types
+ */
+
 export type WithChildrenType = {
   children?: React.ReactNode;
 };
@@ -7,6 +11,16 @@ export type WithClassNameType = {
 };
 
 export type ComponentType = WithChildrenType & WithClassNameType;
+
+export type ButtonType = React.ComponentPropsWithoutRef<'button'>;
+
+export type LinkType = React.ComponentPropsWithoutRef<'a'>;
+
+export type ButtonOrLinkType = ComponentType & ButtonType & LinkType;
+
+/**
+ * Icons Types
+ */
 
 export type IconType = React.ComponentType<
   React.PropsWithoutRef<React.ComponentProps<'svg'>> & {
@@ -25,11 +39,9 @@ export type WithRightIconType = {
 
 export type WithIconsType = WithLeftIconType & WithRightIconType;
 
-export type ButtonType = React.ComponentPropsWithoutRef<'button'>;
-
-export type LinkType = React.ComponentPropsWithoutRef<'a'>;
-
-export type ButtonOrLinkType = ComponentType & ButtonType & LinkType;
+/**
+ * Extract Types
+ */
 
 export type Displayable = JSX.Element | string | number | null | undefined;
 

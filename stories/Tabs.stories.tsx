@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Component>;
 
 export const Tabs: Story = {
   args: {
-    options: ['test', 'test2', 'test3'].map((item) => ({ title: item })),
+    options: ['1', '2', '3', '4'].map((item) => ({ title: `Tab #${item}` })),
     display: 'title',
     defaultIndex: 0,
   },
