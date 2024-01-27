@@ -1,4 +1,4 @@
-import { DefaultPropsType, IconType } from '@/types';
+import { ComponentType, WithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Icon from '@/components/helpers/icon';
@@ -10,14 +10,14 @@ const sizes = {
   l: 'space-x-[12px]',
 };
 
-export type Props = DefaultPropsType<{
+type CombiningTypes = ComponentType & WithIconsType;
+
+export type Props = CombiningTypes & {
   size: 's' | 'm' | 'l';
   medium?: boolean;
-  leftIcon?: IconType;
-  rightIcon?: IconType;
-}>;
+};
 
-const Content = ({ children, size, medium, leftIcon: LeftIcon, rightIcon: RightIcon, className }: Props) => (
+const Content = ({ children, className, leftIcon: LeftIcon, rightIcon: RightIcon, size, medium }: Props) => (
   <span className={clsx('inline-flex w-max flex-nowrap items-center', sizes[size], className)}>
     {LeftIcon && <Icon name={LeftIcon} size={size} />}
     {children && (

@@ -9,14 +9,14 @@ const meta: Meta<typeof Component> = {
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
+    className: { control: 'text' },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     size: {
       options: ['s', 'm', 'l'],
       control: { type: 'radio' },
     },
     medium: { control: 'boolean' },
-    leftIcon: getIconsArg(),
-    rightIcon: getIconsArg(),
-    className: { control: 'text' },
   },
 };
 
@@ -27,9 +27,9 @@ type Story = StoryObj<typeof Component>;
 export const Content: Story = {
   args: {
     children: 'Content',
-    size: 'm',
-    medium: false,
     leftIcon: undefined,
     rightIcon: undefined,
+    size: 'm',
+    medium: false,
   },
 };

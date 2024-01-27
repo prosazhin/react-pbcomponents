@@ -1,7 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { useEffect, useRef, useState } from 'react';
 
-import { DefaultPropsType, IconType } from '@/types';
+import { ButtonOrLinkType, ComponentType, WithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -45,32 +45,21 @@ const themes = {
   },
 };
 
-export type Props = DefaultPropsType<{
-  as?: React.ElementType;
+type CombiningTypes = ComponentType & ButtonOrLinkType & WithIconsType;
+
+export type Props = CombiningTypes & {
   size: 'xs' | 's' | 'm' | 'l';
   theme: 'filled' | 'light' | 'border' | 'ghost';
   color: 'primary' | 'secondary' | 'success' | 'danger';
-  leftIcon?: IconType;
-  rightIcon?: IconType;
-  isDisabled?: boolean;
-  isLoading?: boolean;
-}>;
+  loading?: boolean;
+};
 
-const Button = ({
-  as: Component = 'button',
-  children,
-  size,
-  theme,
-  color,
-  className,
-  leftIcon,
-  rightIcon,
-  isDisabled = false,
-  isLoading = false,
-  ...rest
-}: Props) => {
-  const ref = useRef<HTMLElement>(null);
+const Button = ({ children, className, leftIcon, rightIcon, size, theme, color, loading, ...rest }: Props) => {
   const [width, setWidth] = useState<number>(0);
+  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+
+  const { href, disabled } = rest;
+  const Component = href ? 'a' : 'button';
 
   useEffect(() => {
     if (ref && ref.current) {
@@ -81,19 +70,19 @@ const Button = ({
   return (
     <Component
       className={clsx(
-        'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:w-full before:h-full before:transition-colors',
+        'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:size-full before:transition-colors',
         sizes[size],
-        theme === 'border' ? 'before:border' : '',
-        isDisabled && !isLoading ? `${themes[theme].disabled} !cursor-not-allowed` : themes[theme][color],
+        theme === 'border' && 'before:border',
+        disabled && !loading ? `${themes[theme].disabled} !cursor-not-allowed` : themes[theme][color],
         className,
       )}
-      disabled={isDisabled || isLoading}
-      aria-disabled={isDisabled || isLoading}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading}
       ref={ref}
-      style={{ width: isLoading ? width : null }}
+      style={{ width: loading ? width : undefined }}
       {...rest}
     >
-      {isLoading ? (
+      {loading ? (
         <Icon
           name={ArrowPathIcon}
           size={size === 'xs' ? 's' : size}

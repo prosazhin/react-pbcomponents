@@ -8,15 +8,17 @@ const meta: Meta<typeof Component> = {
   component: Component,
   tags: ['autodocs'],
   argTypes: {
+    children: { control: 'text' },
+    className: { control: 'text' },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
-    isActive: {
+    active: {
       control: 'boolean',
     },
-    isDisabled: {
+    disabled: {
       control: 'boolean',
     },
-    className: { control: 'text' },
+    href: { control: 'text' },
   },
 };
 
@@ -29,7 +31,8 @@ export const Badge: Story = {
     children: 'Tab',
     leftIcon: undefined,
     rightIcon: undefined,
-    isActive: false,
-    isDisabled: false,
+    active: false,
+    disabled: false,
+    href: undefined,
   },
 };

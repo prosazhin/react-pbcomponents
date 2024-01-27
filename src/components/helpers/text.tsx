@@ -1,4 +1,4 @@
-import { DefaultPropsType } from '@/types';
+import { ComponentType } from '@/types';
 import clsx from 'clsx';
 
 const styles = {
@@ -16,12 +16,14 @@ const styles = {
   },
 };
 
-export type Props = DefaultPropsType<{
+type CombiningTypes = ComponentType;
+
+export type Props = CombiningTypes & {
   size: 's' | 'm' | 'l';
   medium?: boolean;
-}>;
+};
 
-const Text = ({ children, size, medium, className }: Props) => (
+const Text = ({ children, className, size, medium }: Props) => (
   <span className={clsx('text-inherit', medium ? styles[size].m : styles[size].r, className)}>{children}</span>
 );
 
