@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Content as Component } from '../src';
+import { Tab as Component } from '../src';
 import { getIconsArg } from './arg-types';
 
 const meta: Meta<typeof Component> = {
-  title: 'Helpers/Content',
+  title: 'Helpers/Tab',
   component: Component,
   tags: ['autodocs'],
   argTypes: {
@@ -12,11 +12,13 @@ const meta: Meta<typeof Component> = {
     className: { control: 'text' },
     leftIcon: getIconsArg(),
     rightIcon: getIconsArg(),
-    size: {
-      options: ['s', 'm', 'l'],
-      control: { type: 'radio' },
+    active: {
+      control: 'boolean',
     },
-    medium: { control: 'boolean' },
+    disabled: {
+      control: 'boolean',
+    },
+    href: { control: 'text' },
   },
 };
 
@@ -24,12 +26,13 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const Content: Story = {
+export const Badge: Story = {
   args: {
-    children: 'Content',
+    children: 'Tab',
     leftIcon: undefined,
     rightIcon: undefined,
-    size: 'm',
-    medium: false,
+    active: false,
+    disabled: false,
+    href: undefined,
   },
 };

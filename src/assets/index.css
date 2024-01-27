@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.outline-primary {
+  @apply outline-none outline-offset-0 focus:outline-[4px] focus:outline-outline-primary active:outline-none;
+}
+
+.outline-secondary {
+  @apply outline-none outline-offset-0 focus:outline-[4px] focus:outline-outline-secondary active:outline-none;
+}
+
+.outline-success {
+  @apply outline-none outline-offset-0 focus:outline-[4px] focus:outline-outline-success active:outline-none;
+}
+
+.outline-danger {
+  @apply outline-none outline-offset-0 focus:outline-[4px] focus:outline-outline-danger active:outline-none;
+}

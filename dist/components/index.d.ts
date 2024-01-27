@@ -1,7 +1,9 @@
-export { default as Text } from '../components/helpers/text';
-export { default as Icon } from '../components/helpers/icon';
-export { default as Content } from '../components/helpers/content';
-export { default as Chekbox } from '../components/helpers/chekbox';
-export { default as Button } from '../components/shared/button';
-export { default as Tag } from '../components/shared/tag';
-export { default as Badge } from '../components/shared/badge';
+export { default as Text } from './helpers/text';
+export { default as Icon } from './helpers/icon';
+export { default as Content } from './helpers/content';
+export { default as Chekbox } from './helpers/chekbox';
+export { default as Tab } from './helpers/tab';
+export { default as Button } from './shared/button';
+export { default as Tag } from './shared/tag';
+export { default as Badge } from './shared/badge';
+export { default as Tabs } from './shared/tabs';

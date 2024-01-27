@@ -9,8 +9,11 @@ const meta: Meta<typeof Component> = {
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
+    className: { control: 'text' },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     size: {
-      options: ['xs', 's'],
+      options: ['s', 'm'],
       control: { type: 'radio' },
     },
     theme: {
@@ -21,9 +24,6 @@ const meta: Meta<typeof Component> = {
       options: ['primary', 'secondary', 'success', 'danger'],
       control: { type: 'radio' },
     },
-    leftIcon: getIconsArg(),
-    rightIcon: getIconsArg(),
-    className: { control: 'text' },
   },
 };
 
@@ -34,10 +34,10 @@ type Story = StoryObj<typeof Component>;
 export const Badge: Story = {
   args: {
     children: 'Badge',
-    size: 'xs',
-    theme: 'filled',
-    color: 'primary',
     leftIcon: undefined,
     rightIcon: undefined,
+    size: 's',
+    theme: 'filled',
+    color: 'primary',
   },
 };
