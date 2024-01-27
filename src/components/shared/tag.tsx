@@ -1,7 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { useEffect, useRef, useState } from 'react';
 
-import { ButtonOrLinkType, ComponentType, WithIconsType } from '@/types';
+import { PolymorphicComponentPropsWithRef, WithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -25,18 +25,29 @@ const themes = {
   },
 };
 
-type CombiningTypes = ComponentType & ButtonOrLinkType & WithIconsType;
+export type Props<T extends React.ElementType> = PolymorphicComponentPropsWithRef<
+  T,
+  WithIconsType & {
+    checked: boolean;
+    size: 's' | 'm';
+    theme: 'light' | 'border';
+    loading?: boolean;
+  }
+>;
 
-export type Props = CombiningTypes & {
-  checked: boolean;
-  size: 's' | 'm';
-  theme: 'light' | 'border';
-  loading?: boolean;
-};
-
-const Tag = ({ children, className, leftIcon, rightIcon, checked, size, theme, loading, ...rest }: Props) => {
+const Tag = <T extends React.ElementType = 'button' | 'a'>({
+  children,
+  className,
+  leftIcon,
+  rightIcon,
+  checked,
+  size,
+  theme,
+  loading,
+  ...rest
+}: Props<T>) => {
   const [width, setWidth] = useState<number>(0);
-  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
 
   const { href, disabled } = rest;
   const Component = href ? 'a' : 'button';

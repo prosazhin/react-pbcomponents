@@ -1,4 +1,4 @@
-import { ComponentType, WithIconsType } from '@/types';
+import { ComponentWithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -29,9 +29,7 @@ const themes = {
   },
 };
 
-type CombiningTypes = ComponentType & WithIconsType;
-
-export type Props = CombiningTypes & {
+export type Props = ComponentWithIconsType & {
   size: 's' | 'm';
   theme: 'filled' | 'light' | 'border';
   color: 'primary' | 'secondary' | 'success' | 'danger';

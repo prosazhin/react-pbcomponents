@@ -1,4 +1,4 @@
-import { ComponentType, WithIconsType } from '@/types';
+import { ComponentWithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Icon from '@/components/helpers/icon';
@@ -10,9 +10,7 @@ const sizes = {
   l: 'space-x-[12px]',
 };
 
-type CombiningTypes = ComponentType & WithIconsType;
-
-export type Props = CombiningTypes & {
+export type Props = ComponentWithIconsType & {
   size: 's' | 'm' | 'l';
   medium?: boolean;
 };

@@ -1,24 +1,4 @@
 /**
- * Components Types
- */
-
-export type WithChildrenType = {
-  children?: React.ReactNode;
-};
-
-export type WithClassNameType = {
-  className?: string;
-};
-
-export type ComponentType = WithChildrenType & WithClassNameType;
-
-export type ButtonType = React.ComponentPropsWithoutRef<'button'>;
-
-export type LinkType = React.ComponentPropsWithoutRef<'a'>;
-
-export type ButtonOrLinkType = ComponentType & ButtonType & LinkType;
-
-/**
  * Icons Types
  */
 
@@ -38,6 +18,36 @@ export type WithRightIconType = {
 };
 
 export type WithIconsType = WithLeftIconType & WithRightIconType;
+
+/**
+ * Components Types
+ */
+
+export type ComponentType = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+export type ComponentWithIconsType = ComponentType & WithIconsType;
+
+/**
+ * Polymorphic Component Types
+ */
+
+export type AsProp<C extends React.ElementType> = {
+  as?: C;
+};
+
+export type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
+
+export type PolymorphicComponentProps<C extends React.ElementType, Props = {}> = React.PropsWithChildren<Props & AsProp<C>> &
+  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
+
+export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
+
+export type PolymorphicComponentPropsWithRef<C extends React.ElementType, Props = {}> = PolymorphicComponentProps<C, Props> & {
+  ref?: PolymorphicRef<C>;
+};
 
 /**
  * Extract Types

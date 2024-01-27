@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import { DisplayExtractor, WithClassNameType, extract } from '@/types';
+import { ComponentType, DisplayExtractor, extract } from '@/types';
 import clsx from 'clsx';
 
 import Tab from '@/components/helpers/tab';
 
-type CombiningTypes = WithClassNameType;
-
-export type Props<T> = CombiningTypes & {
+export type Props<T> = ComponentType & {
   defaultIndex: number;
   options: T[];
   display: DisplayExtractor<T>;

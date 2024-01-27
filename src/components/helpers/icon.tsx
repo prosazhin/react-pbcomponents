@@ -1,4 +1,4 @@
-import { IconType, WithClassNameType } from '@/types';
+import { ComponentType, IconType } from '@/types';
 import clsx from 'clsx';
 
 const sizes = {
@@ -16,9 +16,7 @@ const sizes = {
   },
 };
 
-type CombiningTypes = WithClassNameType;
-
-export type Props = CombiningTypes & {
+export type Props = ComponentType & {
   name: IconType;
   size: 's' | 'm' | 'l';
 };

@@ -16,9 +16,7 @@ const styles = {
   },
 };
 
-type CombiningTypes = ComponentType;
-
-export type Props = CombiningTypes & {
+export type Props = ComponentType & {
   size: 's' | 'm' | 'l';
   medium?: boolean;
 };

@@ -1,15 +1,23 @@
-import { ButtonOrLinkType, ComponentType, WithIconsType } from '@/types';
+import { PolymorphicComponentPropsWithRef, WithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
 
-type CombiningTypes = ComponentType & ButtonOrLinkType & WithIconsType;
+export type Props<T extends React.ElementType> = PolymorphicComponentPropsWithRef<
+  T,
+  WithIconsType & {
+    active: boolean;
+  }
+>;
 
-export type Props = CombiningTypes & {
-  active: boolean;
-};
-
-const Tab = ({ children, className, leftIcon, rightIcon, active, ...rest }: Props) => {
+const Tab = <T extends React.ElementType = 'button' | 'a'>({
+  children,
+  className,
+  leftIcon,
+  rightIcon,
+  active,
+  ...rest
+}: Props<T>) => {
   const { href, disabled } = rest;
   const Component = href ? 'a' : 'button';
 
