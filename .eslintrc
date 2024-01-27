@@ -3,7 +3,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true,
   },
   "extends": [
     "eslint:recommended",
@@ -11,11 +11,11 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": 2021,
   },
   "plugins": ["react-refresh", "@typescript-eslint", "prettier", "tailwindcss"],
   "rules": {
@@ -24,7 +24,7 @@
     "tailwindcss/no-custom-classname": "off",
     "curly": "error",
     "no-shadow": "error",
-    "no-nested-ternary": "error",
+    "no-nested-ternary": "off",
     "newline-before-return": "error",
     "object-shorthand": "error",
     "spaced-comment": "error",
@@ -38,12 +38,12 @@
       {
         "extendDefaults": true,
         "types": {
-          "{}": false
-        }
-      }
+          "{}": false,
+        },
+      },
     ],
     "react/react-in-jsx-scope": "off",
     "react-hooks/exhaustive-deps": "off",
-    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }],
+  },
 }

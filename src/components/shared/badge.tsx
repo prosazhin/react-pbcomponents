@@ -1,11 +1,11 @@
-import { DefaultPropsType, IconType } from '@/types';
+import { ComponentWithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
 
 const sizes = {
-  xs: 'py-[4px] px-[8px]',
-  s: 'py-[8px] px-[12px]',
+  s: 'py-[4px] px-[8px]',
+  m: 'py-[8px] px-[12px]',
 };
 
 const themes = {
@@ -29,20 +29,18 @@ const themes = {
   },
 };
 
-export type Props = DefaultPropsType<{
-  size: 'xs' | 's';
+export type Props = ComponentWithIconsType & {
+  size: 's' | 'm';
   theme: 'filled' | 'light' | 'border';
   color: 'primary' | 'secondary' | 'success' | 'danger';
-  leftIcon?: IconType;
-  rightIcon?: IconType;
-}>;
+};
 
-const Badge = ({ children, size, theme, color, leftIcon, rightIcon, className }: Props) => (
+const Badge = ({ children, className, leftIcon, rightIcon, size, theme, color }: Props) => (
   <span
     className={clsx(
-      'inline-flex relative w-max cursor-default flex-nowrap items-center justify-center rounded-full before:absolute before:rounded-full before:w-full before:h-full',
+      'inline-flex relative w-max cursor-default flex-nowrap items-center justify-center rounded-full before:absolute before:rounded-full before:size-full',
       sizes[size],
-      theme === 'border' ? 'before:border' : '',
+      theme === 'border' && 'before:border',
       themes[theme][color],
       className,
     )}
