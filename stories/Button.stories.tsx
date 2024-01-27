@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Button as Component } from '../src';
@@ -7,29 +6,12 @@ import { getIconsArg } from './arg-types';
 const meta: Meta<typeof Component> = {
   title: 'Components/Button',
   component: Component,
-  // render: (args) => {
-  //   const asArgs = {
-  //     button: {
-  //       type: 'button',
-  //       onClick: () => {
-  //         // eslint-disable-next-line no-console
-  //         console.log('Click');
-  //       },
-  //     },
-  //     a: {
-  //       href: '#',
-  //       target: '_self',
-  //     },
-  //   };
-  //   return <Component {...args} {...asArgs[args.as]} />;
-  // },
   tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
-    as: {
-      options: ['button', 'a'],
-      control: { type: 'radio' },
-    },
+    className: { control: 'text' },
+    leftIcon: getIconsArg(),
+    rightIcon: getIconsArg(),
     size: {
       options: ['xs', 's', 'm', 'l'],
       control: { type: 'radio' },
@@ -42,15 +24,13 @@ const meta: Meta<typeof Component> = {
       options: ['primary', 'secondary', 'success', 'danger'],
       control: { type: 'radio' },
     },
-    isDisabled: {
+    disabled: {
       control: 'boolean',
     },
-    isLoading: {
+    loading: {
       control: 'boolean',
     },
-    leftIcon: getIconsArg(),
-    rightIcon: getIconsArg(),
-    className: { control: 'text' },
+    href: { control: 'text' },
   },
 };
 
@@ -61,13 +41,13 @@ type Story = StoryObj<typeof Component>;
 export const Button: Story = {
   args: {
     children: 'Button',
-    as: 'button',
+    leftIcon: undefined,
+    rightIcon: undefined,
     size: 's',
     theme: 'filled',
     color: 'primary',
-    leftIcon: undefined,
-    rightIcon: undefined,
-    isDisabled: false,
-    isLoading: false,
+    disabled: false,
+    loading: false,
+    href: undefined,
   },
 };

@@ -1,7 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { useEffect, useRef, useState } from 'react';
 
-import { DefaultPropsType, IconType } from '@/types';
+import { PolymorphicComponentPropsWithRef, WithIconsType } from '@/types';
 import clsx from 'clsx';
 
 import Content from '@/components/helpers/content';
@@ -16,61 +16,65 @@ const sizes = {
 
 const themes = {
   filled: {
-    primary: 'bg-primary-main text-white hover:bg-primary-darker',
-    secondary: 'bg-secondary-main text-white hover:bg-secondary-darker',
-    success: 'bg-success-main text-white hover:bg-success-darker',
-    danger: 'bg-danger-main text-white hover:bg-danger-main',
+    primary: 'bg-primary-main text-white hover:bg-primary-darker outline-primary',
+    secondary: 'bg-secondary-main text-white hover:bg-secondary-darker outline-secondary',
+    success: 'bg-success-main text-white hover:bg-success-darker outline-success',
+    danger: 'bg-danger-main text-white hover:bg-danger-main outline-danger',
     disabled: 'bg-secondary-lighter text-base-light',
   },
   light: {
-    primary: 'bg-primary-lighter text-primary-main hover:bg-primary-light',
-    secondary: 'bg-secondary-lighter text-base-main hover:bg-secondary-light',
-    success: 'bg-success-lighter text-success-main hover:bg-success-light',
-    danger: 'bg-danger-lighter text-danger-main hover:bg-danger-light',
+    primary: 'bg-primary-lighter text-primary-main hover:bg-primary-light outline-primary',
+    secondary: 'bg-secondary-lighter text-base-main hover:bg-secondary-light outline-secondary',
+    success: 'bg-success-lighter text-success-main hover:bg-success-light outline-success',
+    danger: 'bg-danger-lighter text-danger-main hover:bg-danger-light outline-danger',
     disabled: 'bg-secondary-lighter text-base-light',
   },
   border: {
-    primary: 'before:border-primary-light text-primary-main hover:bg-primary-lighter before:hover:border-primary-lighter',
-    secondary: 'before:border-secondary-light text-base-main hover:bg-secondary-lighter before:hover:border-secondary-lighter',
-    success: 'before:border-success-light text-success-main hover:bg-success-lighter before:hover:border-success-lighter',
-    danger: 'before:border-danger-light text-danger-main hover:bg-danger-lighter before:hover:border-danger-lighter',
+    primary:
+      'before:border-primary-light text-primary-main hover:bg-primary-lighter before:hover:border-primary-lighter outline-primary',
+    secondary:
+      'before:border-secondary-light text-base-main hover:bg-secondary-lighter before:hover:border-secondary-lighter outline-secondary',
+    success:
+      'before:border-success-light text-success-main hover:bg-success-lighter before:hover:border-success-lighter outline-success',
+    danger:
+      'before:border-danger-light text-danger-main hover:bg-danger-lighter before:hover:border-danger-lighter outline-danger',
     disabled: 'before:border-secondary-lighter text-base-light',
   },
   ghost: {
-    primary: 'text-primary-main hover:bg-primary-lighter',
-    secondary: 'text-base-main hover:bg-secondary-lighter',
-    success: 'text-success-main hover:bg-success-lighter',
-    danger: 'text-danger-main hover:bg-danger-lighter',
+    primary: 'text-primary-main hover:bg-primary-lighter outline-primary outline-primary',
+    secondary: 'text-base-main hover:bg-secondary-lighter outline-secondary',
+    success: 'text-success-main hover:bg-success-lighter outline-success',
+    danger: 'text-danger-main hover:bg-danger-lighter outline-danger',
     disabled: 'text-base-light',
   },
 };
 
-export type Props = DefaultPropsType<{
-  as?: React.ElementType;
-  size: 'xs' | 's' | 'm' | 'l';
-  theme: 'filled' | 'light' | 'border' | 'ghost';
-  color: 'primary' | 'secondary' | 'success' | 'danger';
-  leftIcon?: IconType;
-  rightIcon?: IconType;
-  isDisabled?: boolean;
-  isLoading?: boolean;
-}>;
+export type Props<T extends React.ElementType> = PolymorphicComponentPropsWithRef<
+  T,
+  WithIconsType & {
+    size: 'xs' | 's' | 'm' | 'l';
+    theme: 'filled' | 'light' | 'border' | 'ghost';
+    color: 'primary' | 'secondary' | 'success' | 'danger';
+    loading?: boolean;
+  }
+>;
 
-const Button = ({
-  as: Component = 'button',
+const Button = <T extends React.ElementType = 'button' | 'a'>({
   children,
-  size,
-  theme,
-  color,
   className,
   leftIcon,
   rightIcon,
-  isDisabled = false,
-  isLoading = false,
+  size,
+  theme,
+  color,
+  loading,
   ...rest
-}: Props) => {
-  const ref = useRef<HTMLElement>(null);
+}: Props<T>) => {
   const [width, setWidth] = useState<number>(0);
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+
+  const { href, disabled } = rest;
+  const Component = href ? 'a' : 'button';
 
   useEffect(() => {
     if (ref && ref.current) {
@@ -81,19 +85,19 @@ const Button = ({
   return (
     <Component
       className={clsx(
-        'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:w-full before:h-full before:transition-colors',
+        'inline-flex relative w-max cursor-pointer flex-nowrap items-center justify-center transition-colors before:absolute before:size-full before:transition-colors',
         sizes[size],
-        theme === 'border' ? 'before:border' : '',
-        isDisabled && !isLoading ? `${themes[theme].disabled} !cursor-not-allowed` : themes[theme][color],
+        theme === 'border' && 'before:border',
+        disabled && !loading ? `${themes[theme].disabled} !cursor-not-allowed` : themes[theme][color],
         className,
       )}
-      disabled={isDisabled || isLoading}
-      aria-disabled={isDisabled || isLoading}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading}
       ref={ref}
-      style={{ width: isLoading ? width : null }}
+      style={{ width: loading ? width : undefined }}
       {...rest}
     >
-      {isLoading ? (
+      {loading ? (
         <Icon
           name={ArrowPathIcon}
           size={size === 'xs' ? 's' : size}

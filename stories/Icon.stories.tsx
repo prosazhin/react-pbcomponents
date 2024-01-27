@@ -8,12 +8,12 @@ const meta: Meta<typeof Component> = {
   component: Component,
   tags: ['autodocs'],
   argTypes: {
+    className: { control: 'text' },
     name: getIconsArg(),
     size: {
       options: ['s', 'm', 'l'],
       control: { type: 'radio' },
     },
-    className: { control: 'text' },
   },
 };
 
