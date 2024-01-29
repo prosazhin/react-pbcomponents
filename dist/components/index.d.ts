@@ -7,3 +7,4 @@ export { default as Button } from './shared/button';
 export { default as Tag } from './shared/tag';
 export { default as Badge } from './shared/badge';
 export { default as Tabs } from './shared/tabs';
+export { default as Chekbox } from './shared/chekbox';

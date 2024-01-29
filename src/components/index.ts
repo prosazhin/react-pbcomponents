@@ -7,3 +7,4 @@ export { default as Button } from '@/components/shared/button';
 export { default as Tag } from '@/components/shared/tag';
 export { default as Badge } from '@/components/shared/badge';
 export { default as Tabs } from '@/components/shared/tabs';
+export { default as Chekbox } from '@/components/shared/chekbox';

@@ -1,1 +1,1 @@
-export { Text, Icon, Content, Button, Tag, Badge, Tab, Tabs, InlineSelectItem } from './components';
+export { Text, Icon, Content, Button, Tag, Badge, Tab, Tabs, Chekbox, InlineSelectItem } from './components';

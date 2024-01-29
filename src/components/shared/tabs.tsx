@@ -27,7 +27,7 @@ const Tabs = <T,>({ className, defaultIndex = 0, options, display, onChange }: P
         className,
       )}
     >
-      <div className='flex flex-row space-x-[16px] z-[2] relative flex-nowrap items-center w-auto overflow-x-auto scrollbar-hidden'>
+      <div className='flex flex-row gap-x-[16px] z-[2] relative flex-nowrap items-center w-auto overflow-x-auto scrollbar-hidden'>
         {options.map((item, index) => (
           <Tab key={index} {...item} active={activeTab === index} onClick={() => handleTabChange(index, item)}>
             {extract(item, display)}

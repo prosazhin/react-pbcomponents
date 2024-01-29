@@ -5,9 +5,9 @@ import Icon from '@/components/helpers/icon';
 import Text from '@/components/helpers/text';
 
 const sizes = {
-  s: 'space-x-[6px]',
-  m: 'space-x-[8px]',
-  l: 'space-x-[12px]',
+  s: 'gap-x-[6px]',
+  m: 'gap-x-[8px]',
+  l: 'gap-x-[12px]',
 };
 
 export type Props = ComponentWithIconsType & {
