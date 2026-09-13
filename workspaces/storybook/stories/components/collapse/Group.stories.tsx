@@ -29,6 +29,10 @@ const meta = {
       type: 'string',
       defaultValue: { summary: undefined },
     },
+    joined: {
+      control: 'boolean',
+      defaultValue: { summary: 'false' },
+    },
   },
   args: {
     children: ['One', 'Two', 'Three', 'Four', 'Five'].map((value, index) => (
@@ -37,10 +41,11 @@ const meta = {
       </Collapse>
     )),
     name: 'preview',
+    joined: false,
     className: '',
   },
-  render: ({ children, className, name }) => (
-    <Component name={name} className={className ? className : undefined}>
+  render: ({ children, className, name, joined }) => (
+    <Component name={name} joined={joined} className={className ? className : undefined}>
       {children}
     </Component>
   ),

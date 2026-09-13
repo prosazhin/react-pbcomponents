@@ -154,7 +154,7 @@ const Search = (props: SearchProps) => {
               ref={dropdownRef}
               className={clsx(
                 'pbc:absolute pbc:inset-x-0 pbc:mx-auto pbc:z-10 pbc:box-border pbc:w-full pbc:max-h-309 pbc:bottom-0 pbc:translate-y-[calc(100%+6px)]',
-                'pbc:bg-white pbc:rounded-16 pbc:border pbc:border-solid pbc:border-secondary-lighter pbc:p-8 pbc-scrollbar-hidden pbc:overflow-y-auto',
+                'pbc:bg-basic-0 pbc:rounded-16 pbc:border pbc:border-solid pbc:border-secondary-100 pbc:p-8 pbc-scrollbar-hidden pbc:overflow-y-auto',
                 dropdownClassName,
               )}
               initial={{ opacity: 0, bottom: 6 }}
@@ -171,8 +171,8 @@ const Search = (props: SearchProps) => {
                       <button
                         className={clsx(
                           'pbc pbc:w-full pbc:flex pbc:flex-row pbc:items-center pbc:gap-8 pbc:px-20 pbc:py-12 pbc:cursor-pointer pbc:transition-colors pbc:duration-150 pbc:rounded-12 pbc:max-h-48',
-                          'pbc:bg-transparent pbc:text-basic-main pbc:hover:bg-secondary-lighter',
-                          disabledItem && 'pbc:cursor-default! pbc:text-basic-light! pbc:bg-transparent!',
+                          'pbc:bg-transparent pbc:text-text-primary pbc:hover:bg-secondary-100',
+                          disabledItem && 'pbc:cursor-default! pbc:text-text-secondary! pbc:bg-transparent!',
                           dropdownItemClassName,
                         )}
                         type='button'
@@ -185,9 +185,9 @@ const Search = (props: SearchProps) => {
                           className={clsx('pbc:w-full pbc:text-left')}
                           leftIcon={CheckIcon}
                           leftIconClassName={clsx(
-                            'pbc:invisible pbc:text-primary-darker',
+                            'pbc:invisible pbc:text-primary-400',
                             selected.some((i) => getOptionKey(i) === key) && 'pbc:visible!',
-                            disabledItem && 'pbc:text-basic-light!',
+                            disabledItem && 'pbc:text-text-secondary!',
                           )}
                         >
                           {display}

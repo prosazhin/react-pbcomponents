@@ -77,10 +77,10 @@ const Checkbox = (props: CheckboxProps) => {
           disabled={disabled}
           className={clsx(
             'pbc pbc:size-full pbc:cursor-pointer pbc:appearance-none pbc:transition-colors pbc:duration-150 pbc:focus:ring-0 pbc:focus:ring-offset-0 pbc:focus:outline-outline-primary pbc:outline-4 pbc:outline-offset-0 pbc:m-0!',
-            'pbc:rounded-4 pbc:border-secondary-light pbc:group-hover:border-primary-main pbc:border pbc:border-solid',
-            'pbc:disabled:cursor-default! pbc:disabled:bg-basic-lighter! pbc:disabled:border-secondary-light! pbc:group-hover:disabled:border-secondary-light! pbc:group-hover:disabled:bg-basic-lighter!',
-            'pbc:checked:bg-primary-main pbc:checked:border-transparent pbc:group-hover:checked:bg-primary-darker pbc:disabled:checked:bg-primary-light! pbc:disabled:checked:border-transparent! pbc:group-hover:disabled:checked:bg-primary-light!',
-            'pbc:indeterminate:bg-primary-main pbc:indeterminate:border-transparent pbc:group-hover:indeterminate:bg-primary-darker pbc:disabled:indeterminate:bg-primary-light! pbc:disabled:indeterminate:border-transparent! pbc:group-hover:disabled:indeterminate:bg-primary-light!',
+            'pbc:rounded-4 pbc:border-secondary-200 pbc:group-hover:border-primary-300 pbc:border pbc:border-solid',
+            'pbc:disabled:cursor-default! pbc:disabled:bg-secondary-100! pbc:disabled:border-secondary-200! pbc:group-hover:disabled:border-secondary-200! pbc:group-hover:disabled:bg-secondary-100!',
+            'pbc:checked:bg-primary-300 pbc:checked:border-transparent pbc:group-hover:checked:bg-primary-400 pbc:disabled:checked:bg-primary-200! pbc:disabled:checked:border-transparent! pbc:group-hover:disabled:checked:bg-primary-200!',
+            'pbc:indeterminate:bg-primary-300 pbc:indeterminate:border-transparent pbc:group-hover:indeterminate:bg-primary-400 pbc:disabled:indeterminate:bg-primary-200! pbc:disabled:indeterminate:border-transparent! pbc:group-hover:disabled:indeterminate:bg-primary-200!',
             className,
           )}
           onChange={(event) => onChange(event.target.checked, value, event)}
@@ -90,7 +90,7 @@ const Checkbox = (props: CheckboxProps) => {
             tag={ComponentIcon}
             size={size}
             className={clsx(
-              'pbc:absolute pbc:inset-0 pbc:m-auto pbc:text-white pbc:pointer-events-none pbc:select-none',
+              'pbc:absolute pbc:inset-0 pbc:m-auto pbc:text-text-contrast pbc:pointer-events-none pbc:select-none',
               size === 's' && 'pbc:top-3',
             )}
           />
@@ -102,7 +102,7 @@ const Checkbox = (props: CheckboxProps) => {
             'pbc:flex-1 pbc:transition-colors pbc:duration-150',
             labelPlace === 'left' && 'pbc:order-first pbc:justify-end',
             labelPlace === 'right' && 'pbc:order-last pbc:justify-start',
-            disabled ? 'pbc:text-basic-light' : 'pbc:text-basic-main',
+            disabled ? 'pbc:text-text-secondary' : 'pbc:text-text-primary',
             textClassName,
           )}
           size={size}

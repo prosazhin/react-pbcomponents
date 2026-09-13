@@ -79,6 +79,11 @@ const meta = {
       control: 'text',
       defaultValue: { summary: undefined },
     },
+    linkComponent: {
+      control: false,
+      defaultValue: { summary: 'a' },
+      table: { type: { summary: 'React.ElementType' } },
+    },
     target: {
       options: ['_self', '_blank'],
       control: 'radio',

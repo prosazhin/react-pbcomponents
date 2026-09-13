@@ -42,13 +42,13 @@ const InlineRadio = (props: InlineRadioProps) => {
   return (
     <label
       className={clsx(
-        'pbc pbc:relative pbc:z-1 pbc:inline-flex pbc:w-max pbc:flex-nowrap pbc:items-center pbc:justify-center pbc:transition-colors pbc:duration-150 pbc:bg-transparent pbc:text-basic-main pbc:cursor-pointer',
-        'pbc:hover:bg-white/60 pbc:hover:text-primary-main',
-        !checked && disabled && 'pbc:bg-transparent! pbc:text-basic-light!',
-        checked && !disabled && 'pbc:text-primary-darker pbc:hover:text-primary-darker',
-        checked && disabled && 'pbc:text-basic-light!',
-        checked && indicator && 'pbc:bg-white pbc:hover:bg-white',
-        checked && disabled && indicator && 'pbc:bg-white!',
+        'pbc pbc:relative pbc:z-1 pbc:inline-flex pbc:w-max pbc:flex-nowrap pbc:items-center pbc:justify-center pbc:transition-colors pbc:duration-150 pbc:bg-transparent pbc:text-text-primary pbc:cursor-pointer',
+        'pbc:hover:bg-basic-0/60 pbc:hover:text-primary-300',
+        !checked && disabled && 'pbc:bg-transparent! pbc:text-text-secondary!',
+        checked && !disabled && 'pbc:text-primary-400 pbc:hover:text-primary-400',
+        checked && disabled && 'pbc:text-text-secondary!',
+        checked && indicator && 'pbc:bg-basic-0 pbc:hover:bg-basic-0',
+        checked && disabled && indicator && 'pbc:bg-basic-0!',
         disabled && 'pbc:cursor-default!',
         size === 's' && 'pbc:px-12 pbc:py-4 pbc:rounded-6',
         size === 'm' && 'pbc:px-16 pbc:py-8 pbc:rounded-8',

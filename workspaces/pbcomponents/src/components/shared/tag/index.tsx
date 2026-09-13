@@ -2,14 +2,27 @@
 
 import Content from '@/components/helpers/content';
 import Icon from '@/components/helpers/icon';
-import { ButtonOrLinkHTMLAttrs, ButtonOrLinkType, LoadingType, SMSizeType, TextClassNameType, WithIconsType } from '@/types';
+import {
+  ButtonOrLinkHTMLAttrs,
+  ButtonOrLinkType,
+  LinkComponentType,
+  LoadingType,
+  SMSizeType,
+  TextClassNameType,
+  WithIconsType,
+} from '@/types';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
-import { Ref, useEffect, useRef, useState } from 'react';
+import { ElementType, Ref, useEffect, useRef, useState } from 'react';
 
 import useMergeRefs from '@/hooks/use-merge-refs';
 
-type BaseTagProps = Omit<ButtonOrLinkHTMLAttrs, 'children'> & LoadingType & SMSizeType & WithIconsType & TextClassNameType;
+type BaseTagProps = Omit<ButtonOrLinkHTMLAttrs, 'children'> &
+  LoadingType &
+  SMSizeType &
+  LinkComponentType &
+  WithIconsType &
+  TextClassNameType;
 export interface TagProps extends BaseTagProps {
   children?: string;
   checked?: boolean;
@@ -27,6 +40,7 @@ const Tag = (props: TagProps) => {
     type = 'button',
     target = '_self',
     href: externalHref,
+    linkComponent,
     leftIcon,
     leftIconClassName,
     rightIcon,
@@ -49,11 +63,20 @@ const Tag = (props: TagProps) => {
     }
   }, [internalRef, children, size, leftIcon, rightIcon]);
 
-  const Component = externalHref ? 'a' : 'button';
   let href = externalHref ? externalHref : undefined;
 
   if (disabled) {
     href = undefined;
+  }
+
+  // у задизейбленной ссылки href снят, а кастомный link-компонент (например NextLink)
+  // без href падает — поэтому в этом случае рендерим обычный <a>
+  let Component: ElementType = 'button';
+
+  if (href && linkComponent) {
+    Component = linkComponent;
+  } else if (externalHref) {
+    Component = 'a';
   }
 
   return (
@@ -64,16 +87,13 @@ const Tag = (props: TagProps) => {
         'pbc pbc:rounded-999 pbc:inline-flex pbc:w-max pbc:flex-nowrap pbc:cursor-pointer pbc:items-center pbc:justify-center pbc:transition-colors pbc:duration-150 pbc:focus:outline-outline-primary pbc:outline-4 pbc:outline-offset-0 pbc:border pbc:border-transparent',
         size === 's' && 'pbc:h-26 pbc:px-8 pbc:py-4',
         size === 'm' && 'pbc:h-34 pbc:px-12 pbc:py-8',
-        theme === 'light' && !checked && 'pbc:bg-primary-lighter pbc:text-basic-main pbc:hover:bg-primary-light',
+        theme === 'light' && !checked && 'pbc:bg-primary-100 pbc:text-text-primary pbc:hover:bg-primary-200',
         theme === 'border' &&
           !checked &&
-          'pbc:border-secondary-light! pbc:text-basic-main pbc:hover:border-primary-main! pbc:bg-transparent',
-        checked && 'pbc:bg-primary-main pbc:hover:bg-primary-darker pbc:text-white',
-        (theme === 'light' || checked) && disabled && !loading && 'pbc:bg-secondary-lighter! pbc:text-basic-light!',
-        theme === 'border' &&
-          disabled &&
-          !loading &&
-          'pbc:border-secondary-lighter! pbc:hover:border-secondary-lighter! pbc:text-basic-light!',
+          'pbc:border-secondary-200! pbc:text-text-primary pbc:hover:border-primary-300! pbc:bg-transparent',
+        checked && 'pbc:bg-primary-300 pbc:hover:bg-primary-400 pbc:text-text-contrast',
+        (theme === 'light' || checked) && disabled && !loading && 'pbc:bg-secondary-100! pbc:text-text-secondary!',
+        theme === 'border' && disabled && !loading && 'pbc:border-secondary-200! pbc:hover:border-secondary-200! pbc:text-text-secondary!',
         (disabled || loading) && 'pbc:cursor-default!',
         className,
       )}

@@ -115,7 +115,7 @@ const Notification = (props: NotificationProps) => {
             className={clsx(
               'pbc pbc-notification pbc:z-999 pbc:pointer-events-auto pbc:overflow-hidden',
               'pbc:border pbc:border-solid pbc:rounded-8 pbc:w-full pbc:max-w-[calc(100%-32px)] pbc:desktop:max-w-400 pbc:min-h-80 pbc:m-auto pbc:px-24 pbc:py-16',
-              'pbc:border-secondary-lighter pbc:bg-white pbc:flex pbc:flex-row pbc:gap-x-16 pbc:items-center',
+              'pbc:border-secondary-100 pbc:bg-basic-0 pbc:flex pbc:flex-row pbc:gap-x-16 pbc:items-center',
               'pbc:shadow-sm pbc:hover:shadow-xxl pbc:transition-shadow pbc:duration-150',
               onClick ? 'pbc:cursor-pointer' : 'pbc:cursor-default',
               !disableCloseByClickInsideAnywhere ? 'pbc:cursor-pointer pbc:group' : 'pbc:cursor-default',
@@ -155,15 +155,15 @@ const Notification = (props: NotificationProps) => {
               <Icon
                 tag={icon}
                 size='l'
-                className={clsx('pbc:size-32 pbc:pointer-events-none pbc:select-none pbc:text-basic-light', iconClassName)}
+                className={clsx('pbc:size-32 pbc:pointer-events-none pbc:select-none pbc:text-text-secondary', iconClassName)}
               />
             )}
             <div className='pbc:flex pbc:flex-col pbc:w-full pbc:gap-y-4'>
-              <Text size='m' medium className='pbc:w-full pbc:text-basic-main'>
+              <Text size='m' medium className='pbc:w-full pbc:text-text-primary'>
                 {headline}
               </Text>
               {children && (
-                <Text size='s' className='pbc:w-full pbc:text-basic-light'>
+                <Text size='s' className='pbc:w-full pbc:text-text-secondary'>
                   {children}
                 </Text>
               )}
@@ -180,12 +180,12 @@ const Notification = (props: NotificationProps) => {
               <Icon
                 tag={XMarkIcon}
                 size='l'
-                className='pbc:text-basic-main pbc:pointer-events-none pbc:group-hover:text-primary-darker pbc:select-none pbc:transition-colors pbc:duration-150'
+                className='pbc:text-text-primary pbc:pointer-events-none pbc:group-hover:text-primary-400 pbc:select-none pbc:transition-colors pbc:duration-150'
               />
             </button>
             {!disableTimer && !disableProgressBar && open && (
               <m.div
-                className='pbc:absolute pbc:h-1 pbc:bottom-0 pbc:inset-x-0 pbc:m-auto pbc:w-full pbc:bg-primary-main'
+                className='pbc:absolute pbc:h-1 pbc:bottom-0 pbc:inset-x-0 pbc:m-auto pbc:w-full pbc:bg-primary-300'
                 initial={{ opacity: 1, x: '-100%' }}
                 animate={{
                   opacity: 1,

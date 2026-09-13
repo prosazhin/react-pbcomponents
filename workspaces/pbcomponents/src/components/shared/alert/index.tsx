@@ -119,11 +119,11 @@ const Alert = (props: AlertProps) => {
             <div
               {...rest}
               className={clsx(
-                'pbc pbc:w-full pbc:relative pbc:flex pbc:flex-col pbc:gap-y-16 pbc:px-24 pbc:py-16 pbc:border pbc:border-solid pbc:rounded-8 pbc:h-auto',
-                color === 'primary' && 'pbc:border-primary-light pbc:bg-primary-lighter/50',
-                color === 'secondary' && 'pbc:border-secondary-lighter pbc:bg-basic-lightest/50',
-                color === 'success' && 'pbc:border-success-light pbc:bg-success-lighter/50',
-                color === 'danger' && 'pbc:border-danger-light pbc:bg-danger-lighter/50',
+                'pbc pbc:w-full pbc:relative pbc:flex pbc:flex-col pbc:gap-y-16 pbc:px-24 pbc:py-16 pbc:border pbc:border-solid pbc:rounded-8 pbc:h-auto pbc:text-text-primary',
+                color === 'primary' && 'pbc:border-primary-200 pbc:bg-primary-50',
+                color === 'secondary' && 'pbc:border-secondary-200 pbc:bg-secondary-50',
+                color === 'success' && 'pbc:border-success-200 pbc:bg-success-50',
+                color === 'danger' && 'pbc:border-danger-200 pbc:bg-danger-50',
                 className,
               )}
             >

@@ -31,6 +31,8 @@ export type ErrorType = { error?: boolean };
 export type MediumType = { medium?: boolean };
 export type WrapperClassNameType = { wrapperClassName?: string };
 export type TextClassNameType = { textClassName?: string };
+// компонент для рендера ссылки вместо <a> — например NextLink в Next-проектах
+export type LinkComponentType = { linkComponent?: ElementType };
 
 export type SizeType = { size?: 'xs' | 's' | 'm' | 'l' };
 export type SMLSizeType = { size?: 's' | 'm' | 'l' };

@@ -26,7 +26,7 @@ const meta = {
     },
     summary: {
       control: 'text',
-      type: 'string',
+      table: { type: { summary: 'React.ReactNode' } },
       defaultValue: { summary: undefined },
     },
     open: {

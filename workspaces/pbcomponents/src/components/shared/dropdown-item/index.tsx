@@ -2,11 +2,15 @@
 
 import Content from '@/components/helpers/content';
 import Badge, { BadgeProps } from '@/components/shared/badge';
-import { ButtonOrLinkHTMLAttrs, TextClassNameType, WithIconsType, WrapperClassNameType } from '@/types';
+import { ButtonOrLinkHTMLAttrs, LinkComponentType, TextClassNameType, WithIconsType, WrapperClassNameType } from '@/types';
 import clsx from 'clsx';
-import { ReactElement } from 'react';
+import { ElementType, ReactElement } from 'react';
 
-type BaseDropdownItemProps = Omit<ButtonOrLinkHTMLAttrs, 'children'> & WithIconsType & WrapperClassNameType & TextClassNameType;
+type BaseDropdownItemProps = Omit<ButtonOrLinkHTMLAttrs, 'children'> &
+  LinkComponentType &
+  WithIconsType &
+  WrapperClassNameType &
+  TextClassNameType;
 export interface DropdownItemProps extends BaseDropdownItemProps {
   children?: string;
   badge?: ReactElement<BadgeProps>;
@@ -22,6 +26,7 @@ const DropdownItem = (props: DropdownItemProps) => {
     type = 'button',
     target = '_self',
     href: externalHref,
+    linkComponent,
     badge,
     leftIcon,
     leftIconClassName,
@@ -34,19 +39,28 @@ const DropdownItem = (props: DropdownItemProps) => {
     ...rest
   } = props;
 
-  const Component = externalHref ? 'a' : 'button';
   let href = externalHref ? externalHref : undefined;
 
   if (disabled) {
     href = undefined;
   }
 
+  // у задизейбленной ссылки href снят, а кастомный link-компонент (например NextLink)
+  // без href падает — поэтому в этом случае рендерим обычный <a>
+  let Component: ElementType = 'button';
+
+  if (href && linkComponent) {
+    Component = linkComponent;
+  } else if (externalHref) {
+    Component = 'a';
+  }
+
   return (
     <div
       className={clsx(
         'pbc:border pbc:border-solid pbc:border-transparent pbc:flex pbc:flex-col',
-        borderTop && 'pbc:border-t-secondary-lighter pbc:mt-8 pbc:pt-8',
-        borderBottom && 'pbc:border-b-secondary-lighter pbc:mb-8 pbc:pb-8',
+        borderTop && 'pbc:border-t-secondary-100 pbc:mt-8 pbc:pt-8',
+        borderBottom && 'pbc:border-b-secondary-100 pbc:mb-8 pbc:pb-8',
         wrapperClassName,
       )}
     >
@@ -54,8 +68,8 @@ const DropdownItem = (props: DropdownItemProps) => {
         {...rest}
         className={clsx(
           'pbc pbc:w-full pbc:flex pbc:flex-row pbc:items-center pbc:gap-8 pbc:px-20 pbc:py-12 pbc:cursor-pointer pbc:transition-colors pbc:duration-150 pbc:rounded-12 pbc:max-h-48',
-          'pbc:bg-transparent pbc:text-basic-main pbc:hover:bg-secondary-lighter',
-          disabled && 'pbc:cursor-default! pbc:text-basic-light! pbc:bg-transparent!',
+          'pbc:bg-transparent pbc:text-text-primary pbc:hover:bg-secondary-100',
+          disabled && 'pbc:cursor-default! pbc:text-text-secondary! pbc:bg-transparent!',
           className,
         )}
         type={externalHref ? undefined : type}

@@ -67,7 +67,7 @@ const Tabs = (props: TabsProps) => {
       <div
         className={clsx(
           'pbc pbc:relative pbc:w-full pbc:after:absolute pbc:after:inset-x-0 pbc:after:bottom-0 pbc:after:z-1',
-          'pbc:after:bg-secondary-lighter pbc:after:h-2 pbc:after:w-full pbc:after:rounded-999',
+          'pbc:after:bg-secondary-200 pbc:after:h-2 pbc:after:w-full pbc:after:rounded-999',
         )}
       >
         <div
@@ -80,7 +80,7 @@ const Tabs = (props: TabsProps) => {
           {indicatorStyle && (
             <LazyMotion features={domAnimation}>
               <m.div
-                className='pbc:absolute pbc:bottom-0 pbc:left-0 pbc:z-3 pbc:h-2 pbc:rounded-999 pbc:bg-primary-main'
+                className='pbc:absolute pbc:bottom-0 pbc:left-0 pbc:z-3 pbc:h-2 pbc:rounded-999 pbc:bg-primary-300'
                 initial={false}
                 animate={{ x: indicatorStyle.x, width: indicatorStyle.width }}
                 transition={mounted ? { duration: 0.2, ease: 'easeInOut' } : { duration: 0 }}

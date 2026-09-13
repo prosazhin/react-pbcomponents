@@ -129,7 +129,7 @@ const Field = (props: FieldProps) => {
   );
   const descriptionClassName = clsx(
     'pbc:w-full pbc:mt-4',
-    error ? 'pbc:text-danger-main' : 'pbc:text-basic-light',
+    error ? 'pbc:text-danger-300' : 'pbc:text-text-secondary',
     descriptionProps?.className,
   );
 
@@ -143,7 +143,7 @@ const Field = (props: FieldProps) => {
         className={clsx('pbc pbc:flex pbc:flex-col pbc:w-full', className)}
       >
         {labelProps?.children && (
-          <Text as='legend' size='s' className={clsx('pbc:text-basic-main pbc:w-full pbc:mb-4', labelProps.className)}>
+          <Text as='legend' size='s' className={clsx('pbc:text-text-primary pbc:w-full pbc:mb-4', labelProps.className)}>
             {labelProps.children}
           </Text>
         )}
@@ -160,7 +160,7 @@ const Field = (props: FieldProps) => {
   return (
     <label {...rest} ref={ref} id={baseId} htmlFor={controlId} className={clsx('pbc pbc:flex pbc:flex-col pbc:w-full', className)}>
       {labelProps?.children && (
-        <Text as='span' size='s' className={clsx('pbc:text-basic-main pbc:w-full pbc:mb-4', labelProps.className)}>
+        <Text as='span' size='s' className={clsx('pbc:text-text-primary pbc:w-full pbc:mb-4', labelProps.className)}>
           {labelProps.children}
         </Text>
       )}

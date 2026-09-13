@@ -15,6 +15,7 @@ export type {
   LabelHTMLAttrs,
   LabelPlaceType,
   LabelType,
+  LinkComponentType,
   LoadingType,
   MediumType,
   PolymorphicProps,

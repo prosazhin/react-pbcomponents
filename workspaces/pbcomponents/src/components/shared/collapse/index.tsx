@@ -4,10 +4,10 @@ import Content from '@/components/helpers/content';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react';
-import { DetailsHTMLAttributes, Ref, useEffect, useState } from 'react';
+import { DetailsHTMLAttributes, ReactNode, Ref, useEffect, useState } from 'react';
 
 export interface CollapseProps extends Omit<DetailsHTMLAttributes<HTMLDetailsElement>, 'open'> {
-  summary: string;
+  summary: ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
   contentClassName?: string;
@@ -45,7 +45,7 @@ const Collapse = (props: CollapseProps) => {
       open={open || visible}
       className={clsx(
         'pbc pbc:flex pbc:flex-col pbc:w-full pbc:px-20 pbc:cursor-pointer pbc:group pbc:transition-colors pbc:duration-150',
-        'pbc:rounded-8 pbc:border pbc:border-solid pbc:border-secondary-lighter pbc:hover:bg-basic-lighter',
+        'pbc:rounded-8 pbc:border pbc:border-solid pbc:border-secondary-200 pbc:hover:bg-secondary-100',
         className,
       )}
       onToggle={(event) => {
@@ -72,12 +72,17 @@ const Collapse = (props: CollapseProps) => {
           medium={true}
           rightIcon={PlusIcon}
           rightIconClassName={clsx(
-            'pbc:transition-transform pbc:transition-colors pbc:duration-150 pbc:text-basic-light pbc:group-hover:text-basic-main',
+            'pbc:transition-transform pbc:transition-colors pbc:duration-150 pbc:text-text-secondary pbc:group-hover:text-text-primary',
             open && 'pbc:rotate-45',
           )}
-          className='pbc:transition-colors pbc:duration-150 pbc:w-full pbc:text-basic-main'
+          className='pbc:transition-colors pbc:duration-150 pbc:w-full pbc:text-text-primary'
         >
-          {summary}
+          {typeof summary === 'string' ? (
+            summary
+          ) : (
+            // произвольный контент в заголовке (например текст + Badge) выравниваем в строку
+            <span className='pbc:flex pbc:flex-1 pbc:items-center pbc:gap-x-8'>{summary}</span>
+          )}
         </Content>
       </summary>
       <LazyMotion features={domAnimation}>
@@ -89,7 +94,7 @@ const Collapse = (props: CollapseProps) => {
               animate={{ opacity: 1, height: 'auto', transition: { duration: 0.2, ease: 'easeOut' } }}
               exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: 'easeIn' } }}
             >
-              <div className={clsx('pbc:w-full pbc:pb-16', contentClassName)}>{children}</div>
+              <div className={clsx('pbc:w-full pbc:pb-16 pbc:text-text-primary', contentClassName)}>{children}</div>
             </m.div>
           )}
         </AnimatePresence>

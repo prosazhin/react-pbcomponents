@@ -76,7 +76,7 @@ const InlineRadioGroup = (props: InlineRadioGroupProps) => {
       {...rest}
       ref={externalRef}
       className={clsx(
-        'pbc pbc:relative pbc:w-max pbc:bg-basic-lighter pbc:p-4! pbc:appearance-none',
+        'pbc pbc:relative pbc:w-max pbc:bg-secondary-100 pbc:p-4! pbc:appearance-none',
         size === 's' && 'pbc:rounded-8',
         size === 'm' && 'pbc:rounded-12',
         className,
@@ -90,7 +90,7 @@ const InlineRadioGroup = (props: InlineRadioGroupProps) => {
           <LazyMotion features={domAnimation}>
             <m.div
               className={clsx(
-                'pbc:absolute pbc:left-0 pbc:z-0 pbc:bg-white',
+                'pbc:absolute pbc:left-0 pbc:z-0 pbc:bg-basic-0',
                 size === 's' && 'pbc:top-0 pbc:bottom-0 pbc:rounded-6',
                 size === 'm' && 'pbc:top-0 pbc:bottom-0 pbc:rounded-8',
               )}

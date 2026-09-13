@@ -55,10 +55,10 @@ const Radio = (props: RadioProps) => {
         disabled={disabled}
         className={clsx(
           'pbc pbc:relative pbc:cursor-pointer pbc:appearance-none pbc:transition-colors pbc:duration-150 pbc:focus:ring-0 pbc:focus:ring-offset-0 pbc:focus:outline-outline-primary pbc:outline-4 pbc:outline-offset-0 pbc:m-0!',
-          'pbc:rounded-999 pbc:border-secondary-light pbc:group-hover:border-primary-main pbc:border pbc:border-solid',
-          'pbc:disabled:cursor-default! pbc:disabled:bg-basic-lighter! pbc:disabled:border-secondary-light! pbc:group-hover:disabled:border-secondary-light! pbc:group-hover:disabled:bg-basic-lighter!',
-          'pbc:checked:bg-primary-main pbc:checked:border-transparent pbc:group-hover:checked:bg-primary-darker pbc:disabled:checked:bg-primary-light! pbc:disabled:checked:border-transparent! pbc:group-hover:disabled:checked:bg-primary-light!',
-          'pbc:before:absolute pbc:before:bg-transparent pbc:before:rounded-999 pbc:checked:before:bg-white pbc:before:inset-0 pbc:before:m-auto',
+          'pbc:rounded-999 pbc:border-secondary-200 pbc:group-hover:border-primary-300 pbc:border pbc:border-solid',
+          'pbc:disabled:cursor-default! pbc:disabled:bg-secondary-100! pbc:disabled:border-secondary-200! pbc:group-hover:disabled:border-secondary-200! pbc:group-hover:disabled:bg-secondary-100!',
+          'pbc:checked:bg-primary-300 pbc:checked:border-transparent pbc:group-hover:checked:bg-primary-400 pbc:disabled:checked:bg-primary-200! pbc:disabled:checked:border-transparent! pbc:group-hover:disabled:checked:bg-primary-200!',
+          'pbc:before:absolute pbc:before:bg-transparent pbc:before:rounded-999 pbc:checked:before:bg-basic-0 pbc:before:inset-0 pbc:before:m-auto',
           size === 's' && 'pbc:size-16 pbc:before:size-6',
           size === 'm' && 'pbc:size-20 pbc:before:size-8',
           className,
@@ -71,7 +71,7 @@ const Radio = (props: RadioProps) => {
             'pbc:flex-1 pbc:transition-colors pbc:duration-150',
             labelPlace === 'left' && 'pbc:order-first pbc:justify-end',
             labelPlace === 'right' && 'pbc:order-last pbc:justify-start',
-            disabled ? 'pbc:text-basic-light' : 'pbc:text-basic-main',
+            disabled ? 'pbc:text-text-secondary' : 'pbc:text-text-primary',
             textClassName,
           )}
           size={size}

@@ -137,7 +137,7 @@ const Dropdown = (props: DropdownProps) => {
               ref={dropdownRef}
               className={clsx(
                 'pbc:absolute pbc:mx-auto pbc:z-10 pbc:box-border pbc:w-280 pbc:max-xs:w-full pbc:max-h-300 pbc:bottom-0 pbc:translate-y-[calc(100%+6px)]',
-                'pbc:bg-white pbc:rounded-16 pbc:border pbc:border-solid pbc:border-secondary-lighter pbc:p-8 pbc-scrollbar-hidden pbc:overflow-y-auto',
+                'pbc:bg-basic-0 pbc:rounded-16 pbc:border pbc:border-solid pbc:border-secondary-100 pbc:p-8 pbc-scrollbar-hidden pbc:overflow-y-auto',
                 (contentProps?.align ?? 'left') === 'left' && 'pbc:left-0',
                 (contentProps?.align ?? 'left') === 'right' && 'pbc:right-0',
                 contentProps?.className,

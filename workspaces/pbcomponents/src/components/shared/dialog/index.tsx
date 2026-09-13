@@ -300,7 +300,7 @@ const Dialog = (props: DialogProps) => {
             <m.div
               className={clsx(
                 'pbc:absolute pbc:size-full pbc:inset-0 pbc:z-1 pbc:pointer-events-auto',
-                backdrop ? 'pbc:bg-basic-main/50' : 'pbc:bg-transparent',
+                backdrop ? 'pbc:bg-basic-400/50' : 'pbc:bg-transparent',
               )}
               initial={false}
               animate={{ opacity: open ? 1 : 0 }}
@@ -312,7 +312,7 @@ const Dialog = (props: DialogProps) => {
                 'pbc pbc:pt-0 pbc:px-0 pbc:z-10 pbc:mx-auto pbc:desktop:m-auto pbc:box-border pbc:pointer-events-auto',
                 'pbc:w-full pbc:desktop:w-736 pbc:max-w-full pbc:max-h-[calc(100dvh-40px)] pbc:desktop:max-h-[calc(100dvh-160px)]',
                 'pbc-scrollbar-hidden pbc:overflow-x-hidden pbc:overflow-y-auto pbc:flex pbc:flex-col pbc:pb-40 pbc:desktop:pb-80',
-                'pbc:bg-white pbc:rounded-t-16 pbc:desktop:rounded-16 pbc:shadow-xxxxl pbc:border pbc:border-solid pbc:border-secondary-lighter',
+                'pbc:bg-basic-0 pbc:text-text-primary pbc:rounded-t-16 pbc:desktop:rounded-16 pbc:shadow-xxxxl pbc:border pbc:border-solid pbc:border-secondary-200',
                 className,
                 contentProps?.className,
               )}
@@ -322,7 +322,7 @@ const Dialog = (props: DialogProps) => {
               animate={{ opacity: open ? 1 : 0, y: open ? 0 : '100%' }}
               transition={{ duration: animationDuration / 1000, ease: open ? 'easeIn' : 'easeOut' }}
             >
-              <div className='pbc:sticky pbc:top-0 pbc:px-8 pbc:pt-8 pbc:z-10 pbc:flex pbc:justify-end pbc:bg-white'>
+              <div className='pbc:sticky pbc:top-0 pbc:px-8 pbc:pt-8 pbc:z-10 pbc:flex pbc:justify-end pbc:bg-basic-0'>
                 <Button
                   {...closeProps}
                   size={closeProps?.size ?? 'm'}

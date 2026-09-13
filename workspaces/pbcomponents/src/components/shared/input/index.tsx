@@ -181,7 +181,7 @@ const Input = (props: InputProps) => {
             tag={leftIcon}
             size={size}
             className={clsx(
-              'pbc:text-basic-light pbc:pointer-events-none pbc:select-none',
+              'pbc:text-text-secondary pbc:pointer-events-none pbc:select-none',
               'pbc:absolute pbc:inset-y-0 pbc:m-auto',
               size === 's' && 'pbc:left-8',
               size === 'm' && 'pbc:left-12',
@@ -201,12 +201,12 @@ const Input = (props: InputProps) => {
           aria-label={resolvedAriaLabel}
           aria-labelledby={resolvedAriaLabelledBy}
           className={clsx(
-            'pbc pbc:w-full pbc:border-solid pbc:border pbc:bg-transparent pbc:appearance-none pbc:transition-colors pbc:duration-150 pbc:focus:ring-0 pbc:focus:ring-offset-0 pbc:text-basic-main pbc:placeholder:text-basic-light',
+            'pbc pbc:w-full pbc:border-solid pbc:border pbc:bg-transparent pbc:appearance-none pbc:transition-colors pbc:duration-150 pbc:focus:ring-0 pbc:focus:ring-offset-0 pbc:text-text-primary pbc:placeholder:text-text-secondary',
             !error &&
-              'pbc:border-secondary-light pbc:hover:border-primary-main pbc:focus:border-primary-main pbc:focus:outline-outline-primary pbc:outline-4 pbc:outline-offset-0',
+              'pbc:border-secondary-200 pbc:hover:border-primary-400 pbc:focus:border-primary-400 pbc:focus:outline-outline-primary pbc:outline-4 pbc:outline-offset-0',
             error &&
-              'pbc:border-danger-main pbc:hover:border-danger-main pbc:focus:border-danger-main pbc:focus:outline-outline-danger pbc:outline-4 pbc:outline-offset-0',
-            'pbc:disabled:cursor-default! pbc:disabled:bg-basic-lighter! pbc:disabled:border-secondary-light! pbc:hover:disabled:border-secondary-light! pbc:hover:disabled:bg-basic-lighter!',
+              'pbc:border-danger-400 pbc:hover:border-danger-400 pbc:focus:border-danger-400 pbc:focus:outline-outline-danger pbc:outline-4 pbc:outline-offset-0',
+            'pbc:disabled:cursor-default! pbc:disabled:bg-secondary-50! pbc:disabled:border-secondary-200! pbc:hover:disabled:border-secondary-200! pbc:hover:disabled:bg-secondary-50!',
             size === 's' && 'pbc:py-8 pbc:px-12 pbc:h-34 pbc:text-t12! pbc:rounded-8',
             size === 's' && leftIcon && 'pbc:pl-32',
             size === 's' && rightIcon && 'pbc:pr-32',
@@ -229,7 +229,7 @@ const Input = (props: InputProps) => {
             tag={rightIcon}
             size={size}
             className={clsx(
-              'pbc:text-basic-light pbc:pointer-events-none pbc:select-none',
+              'pbc:text-text-secondary pbc:pointer-events-none pbc:select-none',
               'pbc:absolute pbc:inset-y-0 pbc:m-auto',
               size === 's' && 'pbc:right-8',
               size === 'm' && 'pbc:right-12',
